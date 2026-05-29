@@ -4,15 +4,19 @@
   "support": "Nous soutenir",
   "login": "Connexion",
 
-  "title": "Banque de sang algérienne",
+ "title": "Banque de sang en Mauritanie",
 
   "heroDesc": "Sauvez des vies en donnant du sang et rejoignez notre mission humanitaire.",
 
   "search": "Rechercher un donneur",
 
   "bloodType": "Groupe sanguin",
+   "province": "Province",
+  "selectProvince": "Choisissez la province",
+  "selectProvinceFirst": "Choisissez d'abord la province",
+
   "state": "Wilaya",
-  "city": "Ville",
+  "selectState": "Choisissez la wilaya",
 
   "searchBtn": "Rechercher",
   "links": "Liens",
