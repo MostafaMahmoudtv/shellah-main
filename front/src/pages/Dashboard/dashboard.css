@@ -1,0 +1,325 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background: #050505;
+}
+
+/* MAIN DASHBOARD */
+
+.bloodDashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #070707;
+  color: white;
+}
+
+/* SIDEBAR */
+
+.bloodSidebar {
+  width: 270px;
+  background: #0f0f0f;
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px 20px;
+}
+
+.bloodLogo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ff5c8a;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.bloodMenu {
+  list-style: none;
+}
+
+.bloodMenu li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 16px 18px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  color: #d0d0d0;
+
+  margin-bottom: 12px;
+
+  font-size: 16px;
+}
+
+.bloodMenu li:hover,
+.bloodMenuActive {
+  background: rgba(255, 92, 138, 0.12);
+  color: #ff5c8a;
+}
+
+/* MAIN CONTENT */
+
+.bloodMainContent {
+  flex: 1;
+  padding: 30px;
+}
+
+/* TOPBAR */
+
+.bloodTopbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 35px;
+}
+
+.bloodTopbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.bloodTopbarLeft h2 {
+  font-size: 28px;
+}
+
+.bloodTopbarLeft svg {
+  font-size: 22px;
+  color: #ff5c8a;
+}
+
+/* SEARCH */
+
+.bloodSearchBox {
+  width: 320px;
+  height: 52px;
+
+  background: #111;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+}
+
+.bloodSearchBox svg {
+  color: #999;
+}
+
+.bloodSearchBox input {
+  flex: 1;
+
+  background: transparent;
+
+  border: none;
+
+  outline: none;
+
+  color: white;
+
+  margin-right: 10px;
+
+  font-family: inherit;
+
+  font-size: 15px;
+}
+
+/* STATS */
+
+.bloodStatsGrid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 22px;
+
+  margin-bottom: 30px;
+}
+
+.bloodStatCard {
+  background: #111;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  transition: 0.3s;
+}
+
+.bloodStatCard:hover {
+  transform: translateY(-5px);
+}
+
+.bloodStatIcon {
+  width: 65px;
+  height: 65px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 92, 138, 0.12);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ff5c8a;
+
+  font-size: 24px;
+}
+
+.bloodStatCard h3 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.bloodStatCard p {
+  color: #aaa;
+  font-size: 15px;
+}
+
+/* CHART */
+
+.bloodChartCard,
+.bloodTableCard {
+  background: #111;
+
+  border-radius: 20px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  margin-bottom: 30px;
+}
+
+.bloodCardHeader {
+  margin-bottom: 20px;
+}
+
+.bloodCardHeader h3 {
+  font-size: 22px;
+}
+
+.bloodChartWrapper {
+  width: 100%;
+  height: 300px;
+}
+
+/* TABLE */
+
+.bloodTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bloodTable thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.bloodTable th,
+.bloodTable td {
+  padding: 18px;
+  text-align: center;
+}
+
+.bloodTable td {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bloodTable th {
+  color: #ff5c8a;
+  font-weight: 700;
+}
+
+/* STATUS */
+
+.bloodStatus {
+  background: rgba(0, 255, 120, 0.12);
+
+  color: #00d26a;
+
+  padding: 6px 14px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  display: inline-block;
+}
+
+.bloodUrgent {
+  background: rgba(255, 0, 80, 0.12);
+  color: #ff4f7d;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+  .bloodStatsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 850px) {
+
+  .bloodDashboard {
+    flex-direction: column;
+  }
+
+  .bloodSidebar {
+    width: 100%;
+  }
+
+  .bloodTopbar {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .bloodSearchBox {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .bloodStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bloodMainContent {
+    padding: 18px;
+  }
+
+  .bloodTable {
+    display: block;
+    overflow-x: auto;
+  }
+
+}

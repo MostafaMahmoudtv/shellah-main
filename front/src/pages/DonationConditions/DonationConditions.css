@@ -1,0 +1,76 @@
+.conditions-page {
+  min-height: 100vh;
+
+  padding: 120px 7%;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 11, 82, 0.15),
+      transparent 35%
+    ),
+    #050505;
+
+  color: white;
+}
+
+.conditions-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.conditions-header {
+  margin-bottom: 60px;
+}
+
+.conditions-header h1 {
+  font-size: 60px;
+  color: white;
+}
+
+.conditions-section {
+  margin-bottom: 55px;
+}
+
+.conditions-section h2 {
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.conditions-section p,
+.conditions-section li {
+  color: #dddddd;
+
+  line-height: 2.2;
+
+  font-size: 22px;
+}
+
+.conditions-section ul {
+  padding-inline-start: 25px;
+}
+
+.conditions-section li {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 992px) {
+
+  .conditions-page {
+    padding: 100px 20px;
+  }
+
+  .conditions-header h1 {
+    font-size: 42px;
+  }
+
+  .conditions-section h2 {
+    font-size: 28px;
+  }
+
+  .conditions-section p,
+  .conditions-section li {
+    font-size: 18px;
+  }
+
+}

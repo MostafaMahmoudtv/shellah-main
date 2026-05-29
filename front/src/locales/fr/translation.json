@@ -1,0 +1,198 @@
+{
+  "home": "Accueil",
+  "stats": "Statistiques",
+  "support": "Nous soutenir",
+  "login": "Connexion",
+
+  "title": "Banque de sang algérienne",
+
+  "heroDesc": "Sauvez des vies en donnant du sang et rejoignez notre mission humanitaire.",
+
+  "search": "Rechercher un donneur",
+
+  "bloodType": "Groupe sanguin",
+  "state": "Wilaya",
+  "city": "Ville",
+
+  "searchBtn": "Rechercher",
+  "links": "Liens",
+  "contact": "Contactez-nous",
+  "who": "Qui sommes-nous",
+  "privacy": "Confidentialité",
+  "donationRules": "Conditions du don",
+  "donationBenefits": "Avantages du don",
+
+  "about": "À propos",
+
+  "aboutDesc": "Nous sommes des jeunes algériens ambitieux cherchant à aider ceux qui ont besoin de sang.",
+  "statistics": "Statistiques",
+  "bloodStats": "Donneurs par groupe sanguin",
+  "totalDonors": "Total des donneurs",
+  "donationBenefitsTitle": "Avantages du don",
+
+  "humanBenefits": "Les avantages humains",
+
+  "humanBenefitsDesc": "En donnant votre sang, vous contribuez à sauver plusieurs vies. Le sang peut être séparé en plusieurs composants essentiels comme les globules rouges, les plaquettes et le plasma.",
+
+  "healthBenefits": "Les avantages pour la santé",
+
+  "health1": "Le don du sang stimule la moelle osseuse et favorise la production de nouvelles cellules sanguines.",
+
+  "health2": "Chaque don aide à réduire l’excès de fer dans le sang, ce qui peut diminuer les risques de maladies cardiaques.",
+
+  "health3": "Les donneurs réguliers sont moins exposés aux maladies circulatoires.",
+
+  "health4": "Le renouvellement du sang améliore l’activité et la vitalité du corps.",
+
+  "health5": "Les analyses effectuées à chaque don permettent de surveiller régulièrement la santé du donneur.",
+
+  "goodDeeds": "Bonnes actions",
+
+  "deed1": "Le don du sang est considéré comme une noble action humanitaire.",
+
+  "deed2": "Sauver une vie équivaut à sauver toute l’humanité.",
+
+  "deed3": "Aider les autres apporte une immense récompense morale et spirituelle.",
+
+  "whyDonate": "Pourquoi devenir donneur de sang ?",
+
+  "why1": "Toutes les trois secondes, quelqu’un a besoin de sang.",
+
+  "why2": "Un patient hospitalisé sur dix a besoin d’une transfusion sanguine.",
+
+  "why3": "Votre sang peut sauver jusqu’à quatre personnes.",
+
+  "why4": "Le don redonne énergie et vitalité grâce au renouvellement des cellules sanguines.",
+
+  "why5": "Le donneur peut recevoir les résultats de ses analyses, y compris son groupe sanguin.",
+  "donationConditionsTitle": "Conditions du don",
+
+  "beforeDonation": "Ce que le donneur doit faire avant le don",
+
+  "before1": "Dormir au moins 5 heures.",
+  "before2": "Prendre un repas avant le don.",
+  "before3": "Apporter une pièce d’identité.",
+
+  "eligiblePeople": "Personnes aptes au don",
+
+  "eligible1": "Toute personne âgée de plus de 18 ans.",
+  "eligible2": "Le poids du donneur doit dépasser 50 kg.",
+  "eligible3": "Le taux d’hémoglobine doit être approprié.",
+  "eligible4": "Le donneur ne doit pas souffrir de maladies empêchant le don.",
+
+  "donationRestrictions": "Contre-indications au don",
+
+  "restriction1": "Ne pas avoir donné du sang durant les trois derniers mois.",
+  "restriction2": "Ne pas avoir subi d’opération chirurgicale récemment.",
+  "restriction3": "Hypertension, diabète, paludisme récent, insuffisance rénale, maladies du foie, maladies pulmonaires, rhumatisme, troubles thyroïdiens et maladies sanguines héréditaires.",
+
+  "womenRestrictions": "Restrictions concernant les femmes",
+
+  "womenText": "Les femmes enceintes ne peuvent pas donner leur sang. Après un accouchement, il faut attendre au moins trois mois.",
+
+  "donationDuration": "Durée du don",
+
+  "durationText": "En général, 20 minutes.",
+  "durationText2": "Il faut attendre 3 mois entre deux dons afin de permettre au corps de renouveler les cellules sanguines.",
+
+  "afterDonation": "Recommandations après le don",
+
+  "after1": "Se reposer pendant dix minutes.",
+  "after2": "Éviter les efforts physiques pendant deux heures.",
+  "after3": "Boire beaucoup de liquides pour réhydrater le corps.",
+  "supportUsTitle": "Soutenez-nous",
+
+  "support1": "Soutenez-nous en partageant le site sur les forums, les discussions et les réseaux sociaux.",
+
+  "support2": "Soutenez-nous en plaçant une publicité sur votre site.",
+
+  "support3": "Soutenez-nous en partageant le site avec vos amis.",
+
+  "support4": "Soutenez-nous par vos prières sincères.",
+  "privacyTitle": "Confidentialité",
+
+  "howSiteWorks": "Fonctionnement du site",
+
+  "privacyText1": "Si vous aimez aider les autres et que vous pouvez donner votre sang, vous pouvez vous inscrire sur le site. Lorsqu’une personne de votre région a besoin du même groupe sanguin, elle peut vous contacter pour un don.",
+
+  "privacyText2": "Le but de ce site est uniquement d’aider les personnes ayant besoin de sang. Toute autre utilisation du contenu du site est strictement interdite.",
+
+  "privacyText3": "Les donneurs ont partagé leurs informations dans un but noble et souhaitent qu’elles soient utilisées de la même manière.",
+
+  "privacyText4": "Le site se réserve le droit de poursuivre légalement toute violation de la confidentialité.",
+  "aboutTitle": "Qui sommes-nous",
+
+  "aboutWebsite": "À propos du site",
+
+  "aboutText1": "La Banque de Sang Algérienne est un site caritatif dédié à aider les autres.",
+
+  "aboutText2": "Nous sommes des jeunes algériens ambitieux cherchant à aider ceux qui ont besoin d’une goutte de sang.",
+
+  "aboutText3": "Nous avons besoin de votre soutien en partageant le site et en priant pour nous.",
+
+  "aboutText4": "Le site n’est affilié à aucune organisation, association ou autre entité.",
+
+  "aboutText5": "Le site est géré par un jeune algérien.",
+
+  "aboutText6": "La page Facebook officielle du site se trouve en bas des pages du site.",
+  "contactTitle": "Contactez-nous",
+
+  "contactDesc": "Nous sommes là pour vous aider. Contactez-nous pour toute question ou suggestion.",
+
+  "name": "Nom *",
+
+  "email": "Email *",
+
+  "message": "Message *",
+
+  "namePlaceholder": "Entrez votre nom ou pseudonyme",
+
+  "emailPlaceholder": "Entrez votre adresse email",
+
+  "messagePlaceholder": "Qu’avez-vous à l’esprit ?",
+
+  "send": "Envoyer",
+   "loginTitle": "Connectez-vous à votre compte",
+  "phone": "Téléphone",
+  "password": "Mot de passe",
+  "forgot": "Mot de passe oublié ?",
+  "login": "Connexion",
+  "newUser": "Nouveau donneur ?",
+  "register": "S'inscrire",
+  "phonePlaceholder": "Exemple : 0555 55 55 55",
+  "passwordPlaceholder": "Entrez votre mot de passe",
+
+  "registerTitle": "Créer un nouveau compte",
+
+  "fullName": "Nom",
+  "phone": "Téléphone",
+  "password": "Mot de passe",
+  "confirmPassword": "Confirmer le mot de passe",
+  "email": "E-mail",
+  "bloodType": "Groupe sanguin",
+  "contactMethod": "Méthode de contact",
+  "contactTime": "Heure de contact",
+  "state": "Wilaya",
+  "district": "Daïra",
+  "city": "Commune",
+
+  "fullNamePlaceholder": "Bienfaiteur",
+  "phonePlaceholder": "Exemple : 0555 55 55 55",
+  "passwordPlaceholder": "Entrez votre mot de passe",
+  "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+  "emailPlaceholder": "Entrez votre adresse e-mail",
+
+  "warningTitle": "Avis important",
+  "warningText": "Veuillez ne pas utiliser vos vrais noms afin de préserver votre confidentialité, surtout pour les femmes.",
+
+  "register": "S'inscrire",
+  "alreadyMember": "Déjà membre ?",
+  "login": "Connexion",
+
+  "selectBlood": "Choisissez votre groupe sanguin",
+  "selectContactMethod": "Méthode de contact préférée",
+  "selectContactTime": "Heure de contact préférée",
+  "selectState": "Wilaya",
+  "selectDistrict": "Daïra",
+  "selectCity": "Commune"
+}
