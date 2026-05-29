@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -19,6 +20,30 @@ import "./Register.css";
 
 function Register() {
   const { t } = useTranslation();
+
+  // البيانات دي مؤقتة لحد ما تيجي من الباك
+  const provinces = [
+    { id: 1, name: "Province 1" },
+    { id: 2, name: "Province 2" },
+    { id: 3, name: "Province 3" },
+  ];
+
+  const states = {
+    1: [
+      { id: 1, name: "State 1 - A" },
+      { id: 2, name: "State 1 - B" },
+    ],
+    2: [
+      { id: 3, name: "State 2 - A" },
+      { id: 4, name: "State 2 - B" },
+    ],
+    3: [
+      { id: 5, name: "State 3 - A" },
+      { id: 6, name: "State 3 - B" },
+    ],
+  };
+
+  const [selectedProvince, setSelectedProvince] = useState("");
 
   return (
     <div className="register-page">
@@ -68,6 +93,9 @@ function Register() {
                 <FaPhoneAlt />
               </div>
             </div>
+
+            {/* البريد الإلكتروني */}
+
             <div className="input-group">
               <label>{t("email")} *</label>
 
@@ -77,13 +105,17 @@ function Register() {
                 <FaEnvelope />
               </div>
             </div>
+
             {/* كلمة المرور */}
 
             <div className="input-group">
               <label>{t("password")} *</label>
 
               <div className="input-box">
-                <input type="password" placeholder={t("passwordPlaceholder")} />
+                <input
+                  type="password"
+                  placeholder={t("passwordPlaceholder")}
+                />
 
                 <FaLock />
               </div>
@@ -125,18 +157,6 @@ function Register() {
               </div>
             </div>
 
-            {/* البريد الإلكتروني */}
-
-            <div className="input-group">
-              <label>{t("email")} *</label>
-
-              <div className="input-box">
-                <input type="email" placeholder={t("emailPlaceholder")} />
-
-                <FaEnvelope />
-              </div>
-            </div>
-
             {/* وقت الاتصال */}
 
             <div className="input-group">
@@ -173,28 +193,23 @@ function Register() {
               </div>
             </div>
 
-            {/* البلدية */}
+            {/* المقاطعة */}
 
             <div className="input-group">
-              <label>{t("city")}</label>
+              <label>{t("province")} *</label>
 
               <div className="input-box select-box">
-                <select>
-                  <option>{t("selectCity")}</option>
-                </select>
+                <select
+                  value={selectedProvince}
+                  onChange={(e) => setSelectedProvince(e.target.value)}
+                >
+                  <option value="">{t("selectProvince")}</option>
 
-                <FaChevronDown />
-              </div>
-            </div>
-
-            {/* الدائرة */}
-
-            <div className="input-group">
-              <label>{t("district")}</label>
-
-              <div className="input-box select-box">
-                <select>
-                  <option>{t("selectDistrict")}</option>
+                  {provinces.map((province) => (
+                    <option key={province.id} value={province.id}>
+                      {province.name}
+                    </option>
+                  ))}
                 </select>
 
                 <FaChevronDown />
@@ -207,8 +222,19 @@ function Register() {
               <label>{t("state")} *</label>
 
               <div className="input-box select-box">
-                <select>
-                  <option>{t("selectState")}</option>
+                <select disabled={!selectedProvince}>
+                  <option value="">
+                    {selectedProvince
+                      ? t("selectState")
+                      : t("selectProvinceFirst")}
+                  </option>
+
+                  {selectedProvince &&
+                    states[selectedProvince]?.map((state) => (
+                      <option key={state.id} value={state.id}>
+                        {state.name}
+                      </option>
+                    ))}
                 </select>
 
                 <FaMapMarkerAlt />
