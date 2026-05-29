@@ -1,7 +1,6 @@
 import { 
   getAllWilayas, 
   getdairasByWilaya, 
-  getBaladiasBydaira,
   validateWilaya,
   validateDaira
 } from '../utils/mauritanianRegions.js';
@@ -38,30 +37,4 @@ export const getdairas = catchAsync(async (req, res) => {
   });
 });
 
-// جلب البلديات حسب المقاطعة
-export const getBaladias = catchAsync(async (req, res) => {
-  const { wilaya, daira } = req.params;
-  
-  if (!validateWilaya(wilaya)) {
-    return res.status(404).json({ 
-      success: false, 
-      message: `الولاية "${wilaya}" غير موجودة` 
-    });
-  }
-  
-  if (!validateDaira(wilaya, daira)) {
-    return res.status(404).json({ 
-      success: false, 
-      message: `المقاطعة "${daira}" غير موجودة في ولاية "${wilaya}"` 
-    });
-  }
-  
-  const baladias = getBaladiasBydaira(wilaya, daira);
-  res.json({ 
-    success: true, 
-    wilaya, 
-    daira, 
-    count: baladias.length, 
-    baladias
-  });
-});
+

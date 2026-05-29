@@ -40,12 +40,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'الدائرة مطلوبة'],
     trim: true 
   },
-  baladia: { 
-    type: String, 
-    required: [true, 'البلدية مطلوبة'],
-    trim: true 
-  },
-  
+ 
   role: { 
     type: String, 
     enum: ['donor', 'admin', 'super_admin'], 
