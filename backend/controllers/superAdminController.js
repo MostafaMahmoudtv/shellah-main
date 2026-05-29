@@ -47,17 +47,17 @@ export const deleteUser = catchAsync(async (req, res,next) => {
 });
 
 export const createAdmin = catchAsync(async (req, res,next) => {
-  const { phone, name, password,email, bloodType, wilaya, daira, baladia } = req.body;
+  const { phone, name, password,email, bloodType, wilaya, moughataa } = req.body;
   const existingUser = await User.findOne({ phone });
   if (existingUser) return next(new AppError('رقم الهاتف مسجل مسبقاً', 400));
-  const admin = await User.create({ phone, name, password,email, bloodType, wilaya, daira, baladia, role: 'admin' });
+  const admin = await User.create({ phone, name, password,email, bloodType, wilaya, moughataa, role: 'admin' });
   res.status(201).json({ success: true, message: 'تم إنشاء المدير بنجاح', admin: { id: admin._id, name: admin.name, phone: admin.phone,email: admin.email } });
 });
 
 export const createSuperAdmin = catchAsync(async (req, res,next) => {
-  const { phone, name, password, bloodType, wilaya, daira, baladia,email } = req.body;
+  const { phone, name, password, bloodType, wilaya, moughataa,email } = req.body;
   const existingUser = await User.findOne({ phone });
   if (existingUser) return next(new AppError('رقم الهاتف مسجل مسبقاً', 400));
-  const superAdmin = await User.create({ phone, name, password, bloodType, wilaya, daira, baladia,email, role: 'super_admin' });
+  const superAdmin = await User.create({ phone, name, password, bloodType, wilaya, moughataa,email, role: 'super_admin' });
   res.status(201).json({ success: true, message: 'تم إنشاء السوبر أدمن بنجاح', superAdmin: { id: superAdmin._id, name: superAdmin.name, phone: superAdmin.phone,email: superAdmin.email } });
 });

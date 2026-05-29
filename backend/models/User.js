@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     required: [true, 'الولاية مطلوبة'],
     trim: true 
   },
-  daira: { 
+  moughataa: { 
     type: String, 
     required: [true, 'الدائرة مطلوبة'],
     trim: true 

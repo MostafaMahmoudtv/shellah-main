@@ -1,5 +1,5 @@
 import express from 'express';
-import { searchDonors, getAllDonors, getStats } from '../controllers/donorController.js';
+import { searchDonors, getAllDonors,updateDonorProfile,deleteDonorProfile} from '../controllers/donorController.js';
 import { protect, restrictTo } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -10,7 +10,8 @@ router.get('/search', searchDonors);
 // اللي تحتاج تسجيل دخول
 router.use(protect);
 
-router.get('/all', restrictTo('admin', 'super_admin'), getAllDonors);
-router.get('/stats', restrictTo('admin', 'super_admin'), getStats);
+router.get('/all',  getAllDonors);
+router.put('/update', restrictTo('donor'),updateDonorProfile);
+router.delete('/delete', restrictTo('donor'), deleteDonorProfile);
 
 export default router;

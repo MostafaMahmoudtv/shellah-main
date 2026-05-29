@@ -11,6 +11,6 @@ const router = express.Router();
 router.get('/wilayas', getWilayas);
 
 // المستوى الثاني: جلب المقاطعات حسب الولاية
-// GET /api/locations/wilayas/:wilaya/daira
-router.get('/wilayas/:wilaya/daira', getdairas);
+// GET /api/locations/wilayas/:wilaya/moughataa
+router.get('/wilayas/:wilaya/moughataa', getdairas);
 export default router;

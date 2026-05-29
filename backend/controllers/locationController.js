@@ -2,7 +2,7 @@ import {
   getAllWilayas, 
   getdairasByWilaya, 
   validateWilaya,
-  validateDaira
+  validateMoughataa
 } from '../utils/mauritanianRegions.js';
 import catchAsync from '../utils/catchAsync.js';
 

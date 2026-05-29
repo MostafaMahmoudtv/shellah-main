@@ -6,16 +6,16 @@ import catchAsync from '../utils/catchAsync.js';
 const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
 
 export const register = catchAsync(async (req, res, next) => {
-  const { phone, name, password, confirmPassword,email, bloodType, wilaya, daira, preferredContactTime, contactMethod, lastDonationDate } = req.body;
+  const { phone, name, password, confirmPassword,email, bloodType, wilaya, moughataa, preferredContactTime, contactMethod, lastDonationDate } = req.body;
   if (password !== confirmPassword) return next(new AppError('كلمتا المرور غير متطابقتين', 400));
   const existingUser = await User.findOne({ phone });
   if (existingUser) return next(new AppError('رقم الهاتف مسجل مسبقاً', 400));
-  const user = await User.create({ phone, name, password, email, bloodType, wilaya, daira, preferredContactTime, contactMethod, lastDonationDate, role: 'donor' });
+  const user = await User.create({ phone, name, password, email, bloodType, wilaya, moughataa, preferredContactTime, contactMethod, lastDonationDate, role: 'donor' });
   const token = signToken(user._id);
   res.status(201).json({
     success: true,
     token,
-    user: { id: user._id, name: user.name, phone: user.phone ,email: user.email, role: user.role, bloodType: user.bloodType, wilaya: user.wilaya, daira: user.daira }
+    user: { id: user._id, name: user.name, phone: user.phone ,email: user.email, role: user.role, bloodType: user.bloodType, wilaya: user.wilaya, moughataa: user.moughataa }
   });
 });
 export const login = catchAsync(async (req, res, next) => {
@@ -28,7 +28,7 @@ export const login = catchAsync(async (req, res, next) => {
   res.json({
     success: true,
     token,
-    user: { id: user._id, name: user.name, phone: user.phone ,email: user.email, role: user.role, bloodType: user.bloodType, wilaya: user.wilaya, daira: user.daira, preferredContactTime: user.preferredContactTime, contactMethod: user.contactMethod, lastDonationDate: user.lastDonationDate }
+    user: { id: user._id, name: user.name, phone: user.phone ,email: user.email, role: user.role, bloodType: user.bloodType, wilaya: user.wilaya, moughataa: user.moughataa, preferredContactTime: user.preferredContactTime, contactMethod: user.contactMethod, lastDonationDate: user.lastDonationDate }
   });
 });
 export const getMe = catchAsync(async (req, res) => {

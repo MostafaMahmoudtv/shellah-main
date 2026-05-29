@@ -7,21 +7,10 @@ export const getAllDonors = catchAsync(async (req, res) => {
   res.json({ success: true, count: donors.length, donors });
 });
 
-// جلب إحصائيات سريعة
-export const getStats = catchAsync(async (req, res) => {
-  const totalDonors = await User.countDocuments({ role: 'donor', isActive: true });
-  const donorsByBloodType = await User.aggregate([
-    { $match: { role: 'donor', isActive: true } },
-    { $group: { _id: '$bloodType', count: { $sum: 1 } } },
-    { $sort: { _id: 1 } }
-  ]);
-  
-  res.json({ success: true, stats: { totalDonors, donorsByBloodType } });
-});
 
 // البحث عن متبرعين (يدعم العربية والفرنسية)
 export const searchDonors = catchAsync(async (req, res) => {
-  let { bloodType, wilaya, moughataa, baladia, contactMethod, search } = req.query;
+  let { bloodType, wilaya, moughataa, contactMethod, search } = req.query;
   const filter = { role: 'donor', isActive: true };
   
   // فلترة حسب فصيلة الدم
@@ -33,8 +22,6 @@ export const searchDonors = catchAsync(async (req, res) => {
   // فلترة حسب المقاطعة (يدعم عربي وفرنسي)
   if (moughataa) filter.moughataa = { $regex: moughataa, $options: 'i' };
   
-  // فلترة حسب البلدية (يدعم عربي وفرنسي)
-  if (baladia) filter.baladia = { $regex: baladia, $options: 'i' };
   
   // فلترة حسب وسيلة الاتصال
   if (contactMethod) filter.contactMethod = contactMethod;
@@ -50,7 +37,7 @@ export const searchDonors = catchAsync(async (req, res) => {
   }
   
   const donors = await User.find(filter)
-    .select('name phone bloodType wilaya moughataa baladia preferredContactTime contactMethod notes')
+    .select('name phone bloodType wilaya moughataa preferredContactTime contactMethod notes')
     .limit(50);
     
   res.json({ 
@@ -67,9 +54,10 @@ export const getDonorProfile = catchAsync(async (req, res) => {
   res.json({ success: true, donor });
 });
 
+
 // تحديث بروفايل المتبرع
 export const updateDonorProfile = catchAsync(async (req, res) => {
-  const { name, bloodType, wilaya, moughataa, baladia, preferredContactTime, contactMethod, notes } = req.body;
+  const { name, bloodType, wilaya, moughataa, preferredContactTime, contactMethod } = req.body;
   
   const donor = await User.findById(req.user._id);
   if (!donor) return next(new AppError('المتبرع غير موجود', 404));
@@ -78,12 +66,24 @@ export const updateDonorProfile = catchAsync(async (req, res) => {
   if (bloodType) donor.bloodType = bloodType;
   if (wilaya) donor.wilaya = wilaya;
   if (moughataa) donor.moughataa = moughataa;
-  if (baladia) donor.baladia = baladia;
   if (preferredContactTime) donor.preferredContactTime = preferredContactTime;
   if (contactMethod) donor.contactMethod = contactMethod;
-  if (notes) donor.notes = notes;
+
   
   await donor.save();
   
   res.json({ success: true, message: 'تم تحديث البروفايل', donor });
 });
+export const changePassword = catchAsync(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+  if (newPassword !== confirmNewPassword) return next(new AppError('كلمتا المرور الجديدتين غير متطابقتين', 400));
+});
+export const deleteDonorProfile = catchAsync(async (req, res) => {
+  const donor = await User.findById(req.user._id);
+  if (!donor) return next(new AppError('المتبرع غير موجود', 404));
+  donor.isActive = false;
+  await donor.save();
+  res.json({ success: true, message: 'تم حذف البروفايل' });
+}); 
+
+  

@@ -207,8 +207,8 @@ export const validateWilaya = (wilaya) => {
   return mauritanianRegions[wilaya] !== undefined;
 };
 
-export const validateDaira = (wilaya, daira) => {
-  return mauritanianRegions[wilaya] && mauritanianRegions[wilaya][daira] !== undefined;
+export const validateMoughataa = (wilaya, moughataa) => {
+  return mauritanianRegions[wilaya] && mauritanianRegions[wilaya][moughataa] !== undefined;
 };
 
 // البحث في العربية أو الفرنسية
