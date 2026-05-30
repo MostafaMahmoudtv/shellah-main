@@ -57,12 +57,12 @@ export const getDonorProfile = catchAsync(async (req, res) => {
 
 // تحديث بروفايل المتبرع
 export const updateDonorProfile = catchAsync(async (req, res) => {
-  const { name, bloodType, wilaya, moughataa, preferredContactTime, contactMethod } = req.body;
-  
+  const { name,phone, bloodType, wilaya, moughataa, preferredContactTime, contactMethod } = req.body;
   const donor = await User.findById(req.user._id);
   if (!donor) return next(new AppError('المتبرع غير موجود', 404));
   
   if (name) donor.name = name;
+  if (phone) donor.phone = phone;
   if (bloodType) donor.bloodType = bloodType;
   if (wilaya) donor.wilaya = wilaya;
   if (moughataa) donor.moughataa = moughataa;
@@ -85,5 +85,30 @@ export const deleteDonorProfile = catchAsync(async (req, res) => {
   await donor.save();
   res.json({ success: true, message: 'تم حذف البروفايل' });
 }); 
+export const getDonorStats = catchAsync(async (req, res) => {
+  const [bloodTypes, wilayas, contactMethods] = await Promise.all([
+    User.aggregate([
+      { $match: { role: 'donor', isActive: true } },
+      { $group: { _id: '$bloodType', count: { $sum: 1 } } }
+    ]),
+
+    // User.aggregate([
+    //   { $match: { role: 'donor', isActive: true } },
+    //   { $group: { _id: '$wilaya', count: { $sum: 1 } } }
+    // ]),
+
+    // User.aggregate([
+    //   { $match: { role: 'donor', isActive: true } },
+    //   { $group: { _id: '$contactMethod', count: { $sum: 1 } } }
+    // ])
+  ]);
+
+  res.json({
+    success: true,
+    bloodTypes,
+    wilayas,
+    contactMethods
+  });
+});
 
   
