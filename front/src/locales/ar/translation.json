@@ -198,5 +198,33 @@
   "selectContactTime": "وقت الاتصال المفضل",
   "selectState": "الولاية",
   "selectDistrict": "الدائرة",
-  "selectCity": "البلدية"
+  "selectCity": "البلدية",
+   "personalInfo": "المعلومات الشخصية",
+  "accountInfo": "معلومات الحساب",
+  "save": "حفظ",
+
+  "name": "الاسم",
+  "phone": "الهاتف",
+  "email": "البريد الإلكتروني",
+
+  "telegram": "تيليجرام",
+  "whatsapp": "واتساب",
+  "viber": "فايبر",
+
+  "bloodType": "فصيلة الدم",
+  "lastDonation": "آخر تبرع",
+
+  "contactMethod": "وسيلة الاتصال",
+  "contactTime": "وقت الاتصال",
+
+  "governorate": "الولاية",
+  "district": "الدائرة",
+  "municipality": "البلدية",
+
+  "chooseBlood": "اختر فصيلة الدم",
+  "chooseContactMethod": "اختر وسيلة الاتصال",
+  "chooseTime": "اختر وقت الاتصال",
+  "chooseGovernorate": "اختر الولاية",
+  "chooseDistrict": "اختر الدائرة",
+  "chooseMunicipality": "اختر البلدية"
 }

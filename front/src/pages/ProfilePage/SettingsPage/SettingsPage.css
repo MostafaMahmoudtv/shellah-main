@@ -1,0 +1,93 @@
+.account-card {
+  background: linear-gradient(
+    135deg,
+    #11151c 0%,
+    #17131b 100%
+  );
+
+  border: 1px solid #262a33;
+
+  border-radius: 16px;
+
+  padding: 28px;
+}
+
+.account-header {
+  margin-bottom: 28px;
+}
+
+.account-header h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.account-header p {
+  color: #8b8f97;
+  font-size: 14px;
+}
+
+.account-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.account-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-width: 180px;
+  height: 50px;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.account-actions button svg {
+  font-size: 18px;
+}
+
+/* حذف الحساب */
+
+.delete-btn {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+/* تعطيل الحساب */
+
+.disable-btn {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.disable-btn:hover {
+  background: rgba(245, 158, 11, 0.25);
+}
+
+@media (max-width: 768px) {
+  .account-actions {
+    flex-direction: column;
+  }
+
+  .account-actions button {
+    width: 100%;
+  }
+}

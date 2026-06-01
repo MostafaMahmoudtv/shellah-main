@@ -198,5 +198,34 @@
   "selectContactTime": "Heure de contact préférée",
   "selectState": "Wilaya",
   "selectDistrict": "Daïra",
-  "selectCity": "Commune"
+  "selectCity": "Commune",
+
+  "personalInfo": "Informations personnelles",
+  "accountInfo": "Informations du compte",
+  "save": "Enregistrer",
+
+  "name": "Nom",
+  "phone": "Téléphone",
+  "email": "E-mail",
+
+  "telegram": "Telegram",
+  "whatsapp": "WhatsApp",
+  "viber": "Viber",
+
+  "bloodType": "Groupe sanguin",
+  "lastDonation": "Dernier don",
+
+  "contactMethod": "Moyen de contact",
+  "contactTime": "Heure de contact",
+
+  "governorate": "Wilaya",
+  "district": "Daïra",
+  "municipality": "Commune",
+
+  "chooseBlood": "Choisir le groupe sanguin",
+  "chooseContactMethod": "Choisir le moyen de contact",
+  "chooseTime": "Choisir l'heure",
+  "chooseGovernorate": "Choisir la wilaya",
+  "chooseDistrict": "Choisir la daïra",
+  "chooseMunicipality": "Choisir la commune"
 }

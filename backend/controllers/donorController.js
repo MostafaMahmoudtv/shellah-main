@@ -64,9 +64,35 @@ export const updateDonorProfile = catchAsync(async (req, res) => {
   
   res.json({ success: true, message: 'تم تحديث البروفايل', donor });
 });
-export const changePassword = catchAsync(async (req, res, next) => {
+export const changePassword = catchAsync(async (req, res) => {
   const { currentPassword, newPassword, confirmNewPassword } = req.body;
-  if (newPassword !== confirmNewPassword) return next(new AppError('كلمتا المرور الجديدتين غير متطابقتين', 400));
+
+  if (newPassword !== confirmNewPassword) {
+    return res.status(400).json({
+      success: false,
+      message: 'كلمتا المرور الجديدتين غير متطابقتين'
+    });
+  }
+
+  const donor = await User.findById(req.user._id).select('+password');
+
+  const isCorrect = await donor.comparePassword(currentPassword);
+
+  if (!isCorrect) {
+    return res.status(400).json({
+      success: false,
+      message: 'كلمة المرور الحالية غير صحيحة'
+    });
+  }
+
+  donor.password = newPassword;
+
+  await donor.save();
+
+  res.json({
+    success: true,
+    message: 'تم تغيير كلمة المرور بنجاح'
+  });
 });
 export const softdeleteDonorProfile = catchAsync(async (req, res) => {
   const donor = await User.findById(req.user._id);

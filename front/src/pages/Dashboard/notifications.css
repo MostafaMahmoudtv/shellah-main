@@ -1,0 +1,52 @@
+.notifications-page {
+  padding: 20px;
+  background: #f1f5f9;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.badge {
+  background: #ef4444;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.notifications-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notification {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid transparent;
+}
+
+.notification.unread {
+  border-left: 5px solid #ef4444;
+}
+
+.notification.read {
+  opacity: 0.7;
+}
+
+.notification button {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

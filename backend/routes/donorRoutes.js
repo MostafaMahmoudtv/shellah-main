@@ -1,5 +1,13 @@
 import express from 'express';
-import { searchDonors, getAllDonors,updateDonorProfile,deleteDonorProfile,getDonorStats,softdeleteDonorProfile} from '../controllers/donorController.js';
+import {
+  searchDonors,
+  getAllDonors,
+  updateDonorProfile,
+  deleteDonorProfile,
+  getDonorStats,
+  softdeleteDonorProfile,
+  changePassword
+} from '../controllers/donorController.js';
 import { protect, restrictTo } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
@@ -15,5 +23,9 @@ router.get("/DonorStats", getDonorStats);
 router.put('/update', restrictTo('donor', 'admin'), updateDonorProfile);
 router.delete('/delete', restrictTo('donor', 'admin'), deleteDonorProfile);
 router.delete('/soft-delete', restrictTo('donor', 'admin'), softdeleteDonorProfile);
-
+router.put(
+  '/change-password',
+  restrictTo('donor', 'admin'),
+  changePassword
+);
 export default router;

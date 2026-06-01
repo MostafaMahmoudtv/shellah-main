@@ -1,274 +1,115 @@
-import {
-  FaUsers,
-  FaTint,
-  FaHeartbeat,
-  FaHospital,
-  FaBell,
-  FaSearch,
-  FaUserShield,
-  FaMapMarkerAlt,
-  FaChartLine,
-  FaBars,
-} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Layout from "../../components/Dashboard/Layout";
 
-import {
-  LineChart,
-  Line,
-  ResponsiveContainer,
-  XAxis,
-  Tooltip,
-} from "recharts";
+export default function Dashboard() {
+  const [donors, setDonors] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-import "./dashboard.css";
+  const token = localStorage.getItem("token");
 
-function Dashboard() {
-  const dashboardStats = [
-    {
-      title: "إجمالي المتبرعين",
-      value: "12,540",
-      icon: <FaUsers />,
-    },
+  const API = "http://localhost:5000/api/admin";
 
-    {
-      title: "طلبات الدم",
-      value: "1,280",
-      icon: <FaTint />,
-    },
+  // =========================
+  // 🔥 Fetch donors (ADMIN API)
+  // =========================
+  const fetchDonors = async () => {
+    try {
+      setLoading(true);
 
-    {
-      title: "الحالات الحرجة",
-      value: "245",
-      icon: <FaHeartbeat />,
-    },
+      const res = await axios.get(`${API}/donors`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    {
-      title: "المستشفيات",
-      value: "38",
-      icon: <FaHospital />,
-    },
-  ];
+      setDonors(res.data.donors || []);
+    } catch (err) {
+      console.log("Error fetching donors:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const dashboardChartData = [
-    { name: "يناير", users: 400 },
-    { name: "فبراير", users: 700 },
-    { name: "مارس", users: 1000 },
-    { name: "أبريل", users: 1400 },
-    { name: "مايو", users: 1800 },
-    { name: "يونيو", users: 2400 },
-  ];
+  useEffect(() => {
+    if (token) fetchDonors();
+  }, [token]);
+
+  // =========================
+  // 🔥 DELETE donor (SUPER ADMIN ONLY ideally)
+  // =========================
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${API}/donors/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      fetchDonors();
+    } catch (err) {
+      console.log("Delete error:", err);
+    }
+  };
+
+  // =========================
+  // 🔥 UI
+  // =========================
+  const totalDonors = donors.length;
 
   return (
-    <div className="bloodDashboard">
+    <Layout>
+      <h2>Admin Dashboard ⚡</h2>
 
-      {/* SIDEBAR */}
-
-      <aside className="bloodSidebar">
-
-        <div className="bloodLogo">
-          بنك الدم الجزائري
+      {/* =========================
+          🔥 Stats
+      ========================= */}
+      <div style={{ display: "flex", gap: "20px", marginBottom: "30px" }}>
+        <div className="card p-3">
+          <h3>Total Donors</h3>
+          <h2>{totalDonors}</h2>
         </div>
+      </div>
 
-        <ul className="bloodMenu">
+      {/* =========================
+          🔥 List
+      ========================= */}
+      <div>
+        <h3>All Donors</h3>
 
-          <li className="bloodMenuActive">
-            <FaChartLine />
-            لوحة التحكم
-          </li>
+        {loading ? (
+          <p>Loading...</p>
+        ) : donors.length === 0 ? (
+          <p>لا يوجد متبرعين</p>
+        ) : (
+          <div style={{ display: "grid", gap: "12px" }}>
+            {donors.map((donor) => (
+              <div key={donor._id} className="card p-3">
 
-          <li>
-            <FaUsers />
-            المتبرعين
-          </li>
+                <p><b>Name:</b> {donor.name}</p>
+                <p><b>Phone:</b> {donor.phone}</p>
+                <p><b>Blood Type:</b> {donor.bloodType}</p>
+                <p><b>Wilaya:</b> {donor.wilaya}</p>
 
-          <li>
-            <FaTint />
-            طلبات الدم
-          </li>
+                {/* =========================
+                    🔥 Actions
+                ========================= */}
+                <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
 
-          <li>
-            <FaHospital />
-            المستشفيات
-          </li>
+                  <button
+                    onClick={() => handleDelete(donor._id)}
+                    style={{ background: "red", color: "#fff" }}
+                  >
+                    Delete
+                  </button>
 
-          <li>
-            <FaMapMarkerAlt />
-            الولايات
-          </li>
+                </div>
 
-          <li>
-            <FaBell />
-            الإشعارات
-          </li>
-
-          <li>
-            <FaUserShield />
-            المشرفين
-          </li>
-
-        </ul>
-      </aside>
-
-      {/* MAIN */}
-
-      <main className="bloodMainContent">
-
-        {/* TOPBAR */}
-
-        <div className="bloodTopbar">
-
-          <div className="bloodTopbarLeft">
-            <FaBars />
-
-            <h2>لوحة التحكم</h2>
-          </div>
-
-          <div className="bloodSearchBox">
-
-            <FaSearch />
-
-            <input
-              type="text"
-              placeholder="ابحث هنا..."
-            />
-
-          </div>
-
-        </div>
-
-        {/* STATS */}
-
-        <div className="bloodStatsGrid">
-
-          {dashboardStats.map((item, index) => (
-
-            <div
-              className="bloodStatCard"
-              key={index}
-            >
-
-              <div className="bloodStatIcon">
-                {item.icon}
               </div>
-
-              <div>
-                <h3>{item.value}</h3>
-
-                <p>{item.title}</p>
-              </div>
-
-            </div>
-
-          ))}
-
-        </div>
-
-        {/* CHART */}
-
-        <div className="bloodChartCard">
-
-          <div className="bloodCardHeader">
-            <h3>إحصائيات المتبرعين</h3>
+            ))}
           </div>
-
-          <div className="bloodChartWrapper">
-
-            <ResponsiveContainer
-              width="100%"
-              height={300}
-            >
-
-              <LineChart
-                data={dashboardChartData}
-              >
-
-                <XAxis dataKey="name" />
-
-                <Tooltip />
-
-                <Line
-                  type="monotone"
-                  dataKey="users"
-                  stroke="#ff5c8a"
-                  strokeWidth={3}
-                />
-
-              </LineChart>
-
-            </ResponsiveContainer>
-
-          </div>
-
-        </div>
-
-        {/* TABLE */}
-
-        <div className="bloodTableCard">
-
-          <div className="bloodCardHeader">
-            <h3>آخر طلبات التبرع</h3>
-          </div>
-
-          <table className="bloodTable">
-
-            <thead>
-
-              <tr>
-                <th>الاسم</th>
-                <th>فصيلة الدم</th>
-                <th>الولاية</th>
-                <th>الحالة</th>
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              <tr>
-                <td>فاعل خير</td>
-                <td>O+</td>
-                <td>الجزائر</td>
-
-                <td>
-                  <span className="bloodStatus bloodUrgent">
-                    عاجل
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td>متبرع 24</td>
-                <td>A+</td>
-                <td>وهران</td>
-
-                <td>
-                  <span className="bloodStatus">
-                    عادي
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td>فاعل خير</td>
-                <td>B-</td>
-                <td>سطيف</td>
-
-                <td>
-                  <span className="bloodStatus bloodUrgent">
-                    عاجل
-                  </span>
-                </td>
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </main>
-
-    </div>
+        )}
+      </div>
+    </Layout>
   );
 }
-
-export default Dashboard;
