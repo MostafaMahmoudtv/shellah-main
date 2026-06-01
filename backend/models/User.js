@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
   },
   moughataa: { 
     type: String, 
-    required: [true, 'الدائرة مطلوبة'],
+    required: [true, 'المقاطعه مطلوبة'],
     trim: true 
   },
  
@@ -50,14 +50,19 @@ const userSchema = new mongoose.Schema({
     type: Boolean, 
     default: true 
   },
+  status: { 
+    type: String, 
+    enum: ['عاجل', 'عادى', 'متوسط'], 
+    default: 'عادى' 
+  },
   preferredContactTime: { 
     type: String,
-    enum: ['morning', 'afternoon', 'evening', 'anytime'],
+    enum: ['صباحا', 'بعد الظهر', 'مساءا', 'أي وقت'],
     trim: true 
   },
   contactMethod: { 
     type: String, 
-    enum: ['phone', 'whatsapp', 'sms'], 
+    enum: ['تليفون', 'واتساب', 'رسائل نصيه', 'أي طريقة'], 
     default: 'phone' 
   },
   lastDonationDate: { 

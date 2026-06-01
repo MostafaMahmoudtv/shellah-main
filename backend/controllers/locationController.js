@@ -1,24 +1,36 @@
 import { 
-  getAllWilayas, 
-  getdairasByWilaya, 
+  getAllWilayas,
+  getArabicWilayas,
+  getFrenchWilayas,
+  getMoughataasByWilaya, 
+  getBaladiasByMoughataa,
   validateWilaya,
   validateMoughataa
 } from '../utils/mauritanianRegions.js';
 import catchAsync from '../utils/catchAsync.js';
 
-// جلب كل الولايات (عربي + فرنسي)
+// جلب كل الولايات (جميع اللغات)
 export const getWilayas = catchAsync(async (req, res) => {
-  const wilayas = getAllWilayas();
+  const { lang } = req.query; // optional: 'ar' or 'fr'
+  
+  let wilayas;
+  if (lang === 'ar') {
+    wilayas = getArabicWilayas();
+  } else if (lang === 'fr') {
+    wilayas = getFrenchWilayas();
+  } else {
+    wilayas = getAllWilayas();
+  }
+  
   res.json({ 
     success: true, 
     count: wilayas.length, 
-    wilayas,
-    message: 'القائمة تشمل العربية والفرنسية'
+    wilayas
   });
 });
 
 // جلب المقاطعات حسب الولاية
-export const getdairas = catchAsync(async (req, res) => {
+export const getMoughataas = catchAsync(async (req, res) => {
   const { wilaya } = req.params;
   
   if (!validateWilaya(wilaya)) {
@@ -28,13 +40,39 @@ export const getdairas = catchAsync(async (req, res) => {
     });
   }
   
-  const dairas = getdairasByWilaya(wilaya);
+  const moughataas = getMoughataasByWilaya(wilaya);
   res.json({ 
     success: true, 
     wilaya, 
-    count: dairas.length, 
-    dairas
+    count: moughataas.length, 
+    moughataas
   });
 });
 
-
+// جلب البلديات حسب المقاطعة
+export const getBaladias = catchAsync(async (req, res) => {
+  const { wilaya, moughataa } = req.params;
+  
+  if (!validateWilaya(wilaya)) {
+    return res.status(404).json({ 
+      success: false, 
+      message: `الولاية "${wilaya}" غير موجودة` 
+    });
+  }
+  
+  if (!validateMoughataa(wilaya, moughataa)) {
+    return res.status(404).json({ 
+      success: false, 
+      message: `المقاطعة "${moughataa}" غير موجودة في ولاية "${wilaya}"` 
+    });
+  }
+  
+  const baladias = getBaladiasByMoughataa(wilaya, moughataa);
+  res.json({ 
+    success: true, 
+    wilaya, 
+    moughataa, 
+    count: baladias.length, 
+    baladias
+  });
+});

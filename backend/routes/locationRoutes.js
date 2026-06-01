@@ -1,7 +1,7 @@
 import express from 'express';
 import { 
   getWilayas, 
-  getdairas, 
+    getMoughataas, 
 } from '../controllers/locationController.js';
 
 const router = express.Router();
@@ -12,5 +12,5 @@ router.get('/wilayas', getWilayas);
 
 // المستوى الثاني: جلب المقاطعات حسب الولاية
 // GET /api/locations/wilayas/:wilaya/moughataa
-router.get('/wilayas/:wilaya/moughataa', getdairas);
+router.get('/wilayas/:wilaya/moughataa',getMoughataas);
 export default router;

@@ -10,32 +10,18 @@ export const getAllDonors = catchAsync(async (req, res) => {
 
 // البحث عن متبرعين (يدعم العربية والفرنسية)
 export const searchDonors = catchAsync(async (req, res) => {
-  const { bloodType, wilaya, moughataa } = req.query;
+  const { bloodType, wilaya, moughataa} = req.query;
+  const filter = { role: 'donor', isActive: true };
+  
+  if (bloodType) filter.bloodType = bloodType;
+  if (wilaya) filter.wilaya = { $regex: wilaya, $options: 'i' };
+  if (moughataa) filter.moughataa = { $regex: moughataa, $options: 'i' };
 
-  if (!bloodType || !wilaya || !moughataa) {
-    return res.status(400).json({
-      success: false,
-      message: 'يجب إدخال فصيلة الدم والولاية والمقاطعة معاً'
-    });
-  }
-
-  const filter = {
-    role: 'donor',
-    isActive: true,
-    bloodType,
-    wilaya: { $regex: wilaya, $options: 'i' },
-    moughataa: { $regex: moughataa, $options: 'i' }
-  };
-
+  
   const donors = await User.find(filter)
-    .select('name phone bloodType wilaya moughataa preferredContactTime contactMethod notes')
-    .limit(50);
-
-  res.json({
-    success: true,
-    count: donors.length,
-    donors
-  });
+    .select('name phone bloodType wilaya moughataa ');
+    
+  res.json({ success: true, count: donors.length, donors });
 });
 
 // جلب بروفايل المتبرع
@@ -47,7 +33,7 @@ export const getDonorProfile = catchAsync(async (req, res) => {
 
 // تحديث بروفايل المتبرع
 export const updateDonorProfile = catchAsync(async (req, res) => {
-  const { name,phone, bloodType, wilaya, moughataa, preferredContactTime, contactMethod } = req.body;
+  const { name,phone, bloodType, wilaya, moughataa, preferredContactTime, contactMethod ,status} = req.body;
   const donor = await User.findById(req.user._id);
   if (!donor) return next(new AppError('المتبرع غير موجود', 404));
   
@@ -58,8 +44,7 @@ export const updateDonorProfile = catchAsync(async (req, res) => {
   if (moughataa) donor.moughataa = moughataa;
   if (preferredContactTime) donor.preferredContactTime = preferredContactTime;
   if (contactMethod) donor.contactMethod = contactMethod;
-
-  
+  if (status) donor.status = status;
   await donor.save();
   
   res.json({ success: true, message: 'تم تحديث البروفايل', donor });

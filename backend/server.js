@@ -25,13 +25,10 @@ const io = new Server(httpServer, {
   }
 });
 
-// Make io accessible to routes
 app.set('io', io);
 
-// Connect to MongoDB
 connectDB();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,16 +45,13 @@ app.use('/api/notifications', notificationRoutes);
 app.get('/api/export/donors', protect, restrictTo('super_admin'), exportDonorsToExcel);
 app.get('/api/export/all-users', protect, restrictTo('super_admin'), exportAllUsersToExcel);
 
-// Socket.IO connection
+// Socket.IO
 io.on('connection', (socket) => {
-  console.log('🔌 New client connected:', socket.id);
+  console.log('🔌 Client connected:', socket.id);
   
-  // Join admin room (for role-based notifications)
-  socket.on('join-admin-room', (role) => {
-    if (role === 'admin' || role === 'super_admin') {
-      socket.join('admin-room');
-      console.log(`👑 Admin joined room: ${socket.id} (${role})`);
-    }
+  socket.on('register-user', (userId) => {
+    socket.join(`user-${userId}`);
+    console.log(`✅ User ${userId} joined room`);
   });
   
   socket.on('disconnect', () => {
@@ -67,34 +61,17 @@ io.on('connection', (socket) => {
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    success: true, 
-    message: 'Blood Bank API is running with MongoDB & Socket.IO!', 
-    endpoints: {
-      auth: '/api/auth',
-      donors: '/api/donors',
-      admin: '/api/admin',
-      superAdmin: '/api/super-admin',
-      locations: '/api/locations',
-      notifications: '/api/notifications'
-    } 
-  });
+  res.json({ success: true, message: 'Blood Bank API is running!' });
 });
 
 // 404 handler
-app.use( (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: `Route ${req.originalUrl} not found`
-  });
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: `Route ${req.originalUrl} not found` });
 });
 
-// Global error handler
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 httpServer.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📦 Database: MongoDB`);
-  console.log(`🔌 Socket.IO enabled for real-time notifications`);
 });
