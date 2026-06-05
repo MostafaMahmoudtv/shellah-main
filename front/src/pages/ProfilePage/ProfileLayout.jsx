@@ -1,44 +1,46 @@
 import { Outlet, NavLink } from "react-router-dom";
-import {
-  FiUser,
-  FiLock,
-  FiSettings,
-} from "react-icons/fi";
+import { FiUser, FiLock, FiSettings } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
+import styles from "./ProfilePage.module.css";
 
 const ProfileLayout = () => {
-  return (
-    <div className="main-profile-page">
-      <div className="settings-layout">
+  const { t } = useTranslation();
 
-        <div className="profile-content">
+  return (
+    <div className={styles["main-profile-page"]}>
+      <div className={styles["settings-layout"]}>
+
+        <div className={styles["profile-content"]}>
           <Outlet />
         </div>
 
-        <aside className="settings-sidebar">
+        <aside className={styles["settings-sidebar"]}>
+          
           <NavLink
             to="/profile"
             end
-            className="sidebar-item"
+            className={styles["sidebar-item"]}
           >
             <FiUser />
-            <span>المعلومات الشخصية</span>
+            <span>{t("profile.personalInfo")}</span>
           </NavLink>
 
           <NavLink
             to="/profile/security"
-            className="sidebar-item"
+            className={styles["sidebar-item"]}
           >
             <FiLock />
-            <span>كلمة المرور والأمان</span>
+            <span>{t("profile.security")}</span>
           </NavLink>
 
           <NavLink
             to="/profile/settings"
-            className="sidebar-item"
+            className={styles["sidebar-item"]}
           >
             <FiSettings />
-            <span>إعدادات الحساب</span>
+            <span>{t("profile.accountSettings")}</span>
           </NavLink>
+
         </aside>
 
       </div>

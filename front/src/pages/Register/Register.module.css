@@ -1,0 +1,407 @@
+.registerPage {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 11, 82, 0.2),
+      transparent 40%
+    ),
+    var(--hero-bg);
+
+  padding: 120px 20px 50px;
+
+  position: relative;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(4px);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.registerContainer {
+  position: relative;
+  z-index: 2;
+
+  max-width: 800px;
+
+  margin: auto;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.15);
+
+  border-radius: 24px;
+
+  padding: 40px;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0, 0, 0, 0.15);
+
+  transition: 0.3s ease;
+}
+
+/* Light Mode */
+
+[data-theme="light"] .card {
+  background:
+    rgba(255, 255, 255, 0.75);
+
+  border:
+    1px solid
+    rgba(0, 0, 0, 0.08);
+}
+
+.card h1 {
+  text-align: center;
+
+  color: var(--text-color);
+
+  margin-bottom: 30px;
+
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.phoneInput {
+  text-align: end;
+}
+
+/* =========================
+   WARNING BOX
+========================= */
+
+.warningBox {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  margin-bottom: 30px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255, 193, 7, 0.15);
+
+  border: 1px solid
+    rgba(255, 193, 7, 0.25);
+}
+
+.warningBox svg {
+  color: #facc15;
+
+  font-size: 24px;
+
+  flex-shrink: 0;
+}
+
+.warningBox h3 {
+  color: var(--text-color);
+
+  margin-bottom: 5px;
+}
+
+.warningBox p {
+  color: var(--secondary-text);
+
+  line-height: 1.6;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  color: var(--text-color);
+
+  margin-bottom: 8px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.inputBox {
+  position: relative;
+}
+
+.inputBox input,
+.inputBox select {
+  width: 100%;
+  height: 55px;
+
+  border-radius: 14px;
+
+  border: 1px solid
+    var(--border-color);
+
+  outline: none;
+
+  background:
+    var(--input-bg);
+
+  color:
+    var(--text-color);
+
+  padding:
+    0 50px 0 16px;
+
+  font-size: 15px;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.inputBox input::placeholder {
+  color:
+    var(--secondary-text);
+}
+
+.inputBox select option {
+  background:
+    var(--card-bg);
+
+  color:
+    var(--text-color);
+}
+
+.inputBox input:focus,
+.inputBox select:focus {
+  border-color:
+    var(--primary-color);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(214, 11, 82, 0.15);
+}
+
+.inputBox svg {
+  position: absolute;
+
+  right: 18px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  color:
+    var(--secondary-text);
+
+  font-size: 18px;
+}
+
+.inputBox select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.submitBtn {
+  width: 100%;
+
+  margin-top: 30px;
+
+  height: 58px;
+
+  border: none;
+  border-radius: 14px;
+
+  background:
+    var(--primary-color);
+
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.submitBtn:hover {
+  transform:
+    translateY(-2px);
+
+  opacity: 0.9;
+}
+
+/* =========================
+   LOGIN LINK
+========================= */
+
+.registerLink {
+  margin-top: 25px;
+
+  display: flex;
+  justify-content: center;
+
+  gap: 8px;
+
+  color:
+    var(--text-color);
+}
+
+.registerLink a {
+  color:
+    var(--primary-color);
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.registerLink a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   VALIDATION
+========================= */
+
+.inputError {
+  border-color:
+    #dc3545 !important;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(220, 53, 69, 0.1);
+}
+
+.errorText {
+  color: #dc3545;
+
+  font-size: 0.75rem;
+
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  text-align: right;
+
+  animation:
+    fadeIn 0.3s ease;
+}
+
+.errorMessage {
+  background:
+    #f8d7da;
+
+  border:
+    1px solid #f5c6cb;
+
+  color:
+    #721c24;
+
+  padding:
+    0.75rem 1rem;
+
+  border-radius: 8px;
+
+  margin-bottom: 1rem;
+
+  text-align: center;
+
+  font-size: 0.875rem;
+
+  animation:
+    fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform:
+      translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 20px;
+  }
+
+  .card h1 {
+    font-size: 1.6rem;
+  }
+
+  .warningBox {
+    flex-direction: column;
+  }
+
+  .inputBox input,
+  .inputBox select,
+  .submitBtn {
+    height: 50px;
+  }
+}

@@ -1,4 +1,4 @@
-import "./SupportUs.css";
+import  styles from "./SupportUs.module.css";
 
 import { useTranslation } from "react-i18next";
 
@@ -6,15 +6,15 @@ const SupportUs = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="support-page">
+    <section className={styles["support-page"]}>
 
-      <div className="support-container">
+      <div className={styles["support-container"]}>
 
-        <div className="support-header">
+        <div className={styles["support-header"]}>
           <h1>{t("supportUsTitle")}</h1>
         </div>
 
-        <div className="support-content">
+        <div className={styles["support-content"]}>
 
           <ul>
 

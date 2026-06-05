@@ -1,4 +1,4 @@
-import "./DonationConditions.css";
+import styles from "./DonationConditions.module.css";
 
 import { useTranslation } from "react-i18next";
 
@@ -6,17 +6,17 @@ const DonationConditions = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="conditions-page">
+    <section className={styles["conditions-page"]}>
 
-      <div className="conditions-container">
+      <div className={styles["conditions-container"]}>
 
-        <div className="conditions-header">
+        <div className={styles["conditions-header"]}>
           <h1>{t("donationConditionsTitle")}</h1>
         </div>
 
         {/* قبل التبرع */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("beforeDonation")}</h2>
 
@@ -30,7 +30,7 @@ const DonationConditions = () => {
 
         {/* الأشخاص اللائقون */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("eligiblePeople")}</h2>
 
@@ -45,7 +45,7 @@ const DonationConditions = () => {
 
         {/* موانع التبرع */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("donationRestrictions")}</h2>
 
@@ -59,7 +59,7 @@ const DonationConditions = () => {
 
         {/* المرأة */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("womenRestrictions")}</h2>
 
@@ -69,7 +69,7 @@ const DonationConditions = () => {
 
         {/* مدة التبرع */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("donationDuration")}</h2>
 
@@ -81,7 +81,7 @@ const DonationConditions = () => {
 
         {/* التوصيات */}
 
-        <div className="conditions-section">
+        <div className={styles["conditions-section"]}>
 
           <h2>{t("afterDonation")}</h2>
 

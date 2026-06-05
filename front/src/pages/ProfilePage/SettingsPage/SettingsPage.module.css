@@ -1,0 +1,213 @@
+.account-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+
+  padding: 28px;
+
+  transition: all 0.3s ease;
+
+  box-shadow: 0 0 30px
+    rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+[data-theme="dark"] .account-card {
+  background: linear-gradient(
+    135deg,
+    #11151c 0%,
+    #17131b 100%
+  );
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.account-header {
+  margin-bottom: 28px;
+}
+
+.account-header h2 {
+  color: var(--text-color);
+
+  font-size: 24px;
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.account-header p {
+  color: var(--secondary-text);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.account-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 50px;
+  padding: 0 20px;
+
+  border-radius: 10px;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.account-actions button svg {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Focus Accessibility */
+
+.account-actions button:focus-visible {
+  outline: 3px solid
+    rgba(59, 130, 246, 0.35);
+
+  outline-offset: 2px;
+}
+
+/* =========================
+   DELETE ACCOUNT
+========================= */
+
+.delete-btn {
+  background: rgba(
+    239,
+    68,
+    68,
+    0.15
+  );
+
+  color: #ef4444;
+
+  border: 1px solid
+    rgba(239, 68, 68, 0.3);
+}
+
+/* Hover للأجهزة الداعمة فقط */
+
+@media (hover: hover) {
+  .delete-btn:hover {
+    background: rgba(
+      239,
+      68,
+      68,
+      0.25
+    );
+
+    transform: translateY(-2px);
+  }
+
+  .disable-btn:hover {
+    background: rgba(
+      245,
+      158,
+      11,
+      0.25
+    );
+
+    transform: translateY(-2px);
+  }
+}
+
+/* =========================
+   DISABLE ACCOUNT
+========================= */
+
+.disable-btn {
+  background: rgba(
+    245,
+    158,
+    11,
+    0.15
+  );
+
+  color: #f59e0b;
+
+  border: 1px solid
+    rgba(245, 158, 11, 0.3);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .account-card {
+    padding: 20px;
+  }
+
+  .account-header {
+    text-align: center;
+  }
+
+  .account-header h2 {
+    font-size: 20px;
+  }
+
+  .account-header p {
+    font-size: 13px;
+  }
+
+  .account-actions {
+    flex-direction: column;
+  }
+
+  .account-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .account-header {
+    margin-bottom: 20px;
+  }
+
+  .account-header h2 {
+    font-size: 18px;
+  }
+
+  .account-header p {
+    font-size: 12px;
+  }
+
+  .account-actions button {
+    min-height: 48px;
+    font-size: 13px;
+  }
+
+  .account-actions button svg {
+    font-size: 16px;
+  }
+}

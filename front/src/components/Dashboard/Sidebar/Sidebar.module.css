@@ -1,0 +1,106 @@
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #fff;
+  padding: 24px 16px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 35px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebarHeader h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logoIcon {
+  font-size: 28px;
+  color: #38bdf8;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebarLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #cbd5e1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sidebarLink svg {
+  font-size: 18px;
+}
+
+.sidebarLink:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.active {
+  background: #38bdf8;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.active svg {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+  }
+
+  .sidebarHeader h2,
+  .sidebarLink span {
+    display: none;
+  }
+
+  .sidebarHeader {
+    justify-content: center;
+  }
+
+  .sidebarLink {
+    justify-content: center;
+    padding: 14px;
+  }
+}
+.langSwitcher {
+  margin-top: auto;
+  padding: 15px;
+  text-align: center;
+}
+
+.langButton {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.langButton:hover {
+  background: #0056b3;
+}

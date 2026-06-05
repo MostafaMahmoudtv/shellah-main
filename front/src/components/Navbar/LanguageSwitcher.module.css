@@ -1,0 +1,139 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.themeButton {
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+
+  font-size: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: var(--card-bg);
+  color: var(--text-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s ease;
+}
+
+.themeButton:hover {
+  transform: scale(1.05);
+  background: var(--hover-bg);
+}
+
+/* =========================
+   LANGUAGE BOX
+========================= */
+
+.languageBox {
+  position: relative;
+}
+
+/* الزر الرئيسي */
+
+.button {
+  background: var(--card-bg);
+  color: var(--text-color);
+
+  border: 1px solid
+    var(--border-color);
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+.button:hover {
+  background: var(--hover-bg);
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+
+  width: 150px;
+
+  background: var(--card-bg);
+
+  border: 1px solid
+    var(--border-color);
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.15);
+
+  z-index: 1000;
+}
+
+/* العناصر */
+
+.item {
+  padding: 12px 14px;
+
+  color: var(--text-color);
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.item:hover {
+  background: var(--hover-bg);
+}
+
+/* العنصر النشط */
+
+.active {
+  background: var(--hover-bg);
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .button {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
+
+  .themeButton {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+
+  .dropdown {
+    width: 140px;
+  }
+}

@@ -29,9 +29,10 @@ import ProfileLayout from "../pages/ProfilePage/ProfileLayout";
 // ======================
 // Dashboard Pages
 // ======================
-import Dashboard from "../pages/Dashboard/Dashboard";
-import Users from "../pages/Dashboard/User";
-import UserDetails from "../pages/Dashboard/UserDetails";
+import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
+ import UserDetails from "../pages/Dashboard/UserDetails";
+import AdminUsers from './../pages/Dashboard/AdminUsers';
+import SendNotification from './../pages/Dashboard/SendNotification/SendNotification';
 
 const AppRoutes = () => {
   return (
@@ -75,7 +76,9 @@ const AppRoutes = () => {
         }
       >
         <Route index element={<Dashboard />} />
-        <Route path="users" element={<Users />} />
+        <Route path="admins" element={<AdminUsers />} />
+                <Route path="notifications" element={<SendNotification />} />
+
         <Route path="users/:id" element={<UserDetails />} />
       </Route>
 

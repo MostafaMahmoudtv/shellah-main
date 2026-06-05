@@ -19,11 +19,12 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'],
      select: false
   },
-  email: { 
-    type: String, 
-  
-    unique: true,
-  },
+email: { 
+  type: String,
+  unique: true,
+  sparse: true,
+  trim: true
+},
   bloodType: { 
     type: String, 
     enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-',"المستخدم"], 
@@ -63,8 +64,8 @@ const userSchema = new mongoose.Schema({
   contactMethod: { 
     type: String, 
     enum: ['تليفون', 'واتساب', 'رسائل نصيه', 'أي طريقة'], 
-    default: 'phone' 
-  },
+    default: 'تليفون' 
+  }, 
   lastDonationDate: { 
     type: Date 
   },

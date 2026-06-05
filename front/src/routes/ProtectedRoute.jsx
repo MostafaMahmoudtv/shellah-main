@@ -10,8 +10,11 @@ export default function ProtectedRoute({ children }) {
     return <Navigate to="/login" replace />;
   }
 
-  // مش سوبر أدمن
-  if (role !== "super_admin") {
+  // لازم يكون Admin أو Super Admin
+  if (
+    role !== "super_admin" &&
+    role !== "admin"
+  ) {
     return <Navigate to="/" replace />;
   }
 

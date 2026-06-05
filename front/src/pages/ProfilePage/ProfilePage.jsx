@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import i18n from "i18next";
 import { getWilayas, getMoughataas } from "../../services/locationService";
-import "./ProfilePage.css";
-import { FiUser, FiShield, FiLock, FiSettings } from "react-icons/fi";
-const API_URL = "http://localhost:5000";
+import styles from "./ProfilePage.module.css";
+import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
+const API_URL = "https://api.echeile.com";
 
 const ProfilePage = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,15 +25,20 @@ const ProfilePage = () => {
   const [moughataas, setMoughataas] = useState([]);
 
   const [selectedWilaya, setSelectedWilaya] = useState("");
-
   const [selectedMoughataa, setSelectedMoughataa] = useState("");
 
   const [saving, setSaving] = useState(false);
 
+  // 👇 reload data when language changes
   useEffect(() => {
     loadWilayas();
     fetchUser();
-  }, []);
+
+    // reset dependent state
+    setSelectedWilaya("");
+    setSelectedMoughataa("");
+    setMoughataas([]);
+  }, [i18n.language]);
 
   useEffect(() => {
     if (!selectedWilaya) {
@@ -94,6 +102,7 @@ const ProfilePage = () => {
       console.error(error);
     }
   };
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -115,28 +124,37 @@ const ProfilePage = () => {
         },
       });
 
-      alert("تم حفظ التعديلات بنجاح");
+      Swal.fire({
+        icon: "success",
+        title: t("profilePopupSuccessTitle"),
+        text: t("profileUpdatedSuccess"),
+        confirmButtonText: t("profilePopupConfirm"),
+      });
     } catch (error) {
       console.error(error);
-      alert("فشل حفظ التعديلات");
+
+      Swal.fire({
+        icon: "error",
+        title: t("profilePopupErrorTitle"),
+        text: t("profileUpdatedError"),
+        confirmButtonText: t("profilePopupConfirm"),
+      });
     } finally {
       setSaving(false);
     }
   };
 
   return (
-    <div className="profile-page">
-      <div className="settings-layout">
-        <div className="profile-card">
-          <h2 className="profile-title">معلومات الحساب</h2>
+    <div className={styles["profile-page"]}>
+      <div className={styles["settings-layout"]}>
+        <div className={styles["profile-card"]}>
+          <h2 className={styles["profile-title"]}>
+            {t("profileAccountInfoTitle")}
+          </h2>
 
-          <div className="alert-box">
-            إشعار هام: عند تغيير رقم الهاتف سيتم إعادة التحقق من الحساب.
-          </div>
-
-          <form className="profile-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label>الاسم</label>
+          <form className={styles["profile-form"]} onSubmit={handleSubmit}>
+            <div className={styles["form-group"]}>
+              <label>{t("profileNameLabel")}</label>
               <input
                 type="text"
                 name="name"
@@ -145,8 +163,8 @@ const ProfilePage = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label>الهاتف</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profilePhoneLabel")}</label>
               <input
                 type="text"
                 name="phone"
@@ -155,8 +173,8 @@ const ProfilePage = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label>البريد الإلكتروني</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profileEmailLabel")}</label>
               <input
                 type="email"
                 name="email"
@@ -165,15 +183,14 @@ const ProfilePage = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label>فصيلة الدم</label>
-
+            <div className={styles["form-group"]}>
+              <label>{t("profileBloodTypeLabel")}</label>
               <select
                 name="bloodType"
                 value={formData.bloodType}
                 onChange={handleChange}
               >
-                <option value="">اختر فصيلة الدم</option>
+                <option value="">{t("profileSelectBloodType")}</option>
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
                 <option value="B+">B+</option>
@@ -185,8 +202,8 @@ const ProfilePage = () => {
               </select>
             </div>
 
-            <div className="form-group">
-              <label>الولاية</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profileWilayaLabel")}</label>
 
               <select
                 value={selectedWilaya}
@@ -203,7 +220,7 @@ const ProfilePage = () => {
                   }));
                 }}
               >
-                <option value="">اختر الولاية</option>
+                <option value="">{t("profileSelectWilaya")}</option>
 
                 {wilayas.map((wilaya, index) => (
                   <option key={index} value={wilaya}>
@@ -213,8 +230,8 @@ const ProfilePage = () => {
               </select>
             </div>
 
-            <div className="form-group">
-              <label>المقاطعة</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profileMoughataaLabel")}</label>
 
               <select
                 value={selectedMoughataa}
@@ -231,7 +248,9 @@ const ProfilePage = () => {
                 disabled={!selectedWilaya}
               >
                 <option value="">
-                  {selectedWilaya ? "اختر المقاطعة" : "اختر الولاية أولاً"}
+                  {selectedWilaya
+                    ? t("profileSelectMoughataa")
+                    : t("profileSelectWilayaFirst")}
                 </option>
 
                 {moughataas.map((moughataa, index) => (
@@ -242,50 +261,53 @@ const ProfilePage = () => {
               </select>
             </div>
 
-            <div className="form-group">
-              <label>وسيلة الاتصال</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profileContactMethodLabel")}</label>
 
               <select
                 name="contactMethod"
                 value={formData.contactMethod}
                 onChange={handleChange}
               >
-                <option value="">اختر وسيلة الاتصال</option>
+                <option value="">{t("profileAnyContactMethod")}</option>
 
-                <option value="phone">مكالمة هاتفية</option>
+                <option value="phone">{t("profileSmsContact")}</option>
 
-                <option value="whatsapp">واتساب</option>
+                <option value="whatsapp">{t("profilePhoneContact")}</option>
 
-                <option value="telegram">تيليجرام</option>
+                <option value="telegram">{t("profileWhatsappContact")}</option>
               </select>
             </div>
 
-            <div className="form-group">
-              <label>وقت الاتصال</label>
+            <div className={styles["form-group"]}>
+              <label>{t("profileContactTimeLabel")}</label>
 
               <select
                 name="preferredContactTime"
                 value={formData.preferredContactTime}
                 onChange={handleChange}
               >
-                <option value="">اختر وقت الاتصال</option>
+                <option value="">{t("profileAnyTime")}</option>
 
-                <option value="morning">صباحاً</option>
+                <option value="morning">{t("profileMorning")}</option>
 
-                <option value="afternoon">ظهراً</option>
+                <option value="afternoon">{t("profileAfternoon")}</option>
 
-                <option value="evening">مساءً</option>
+                <option value="evening">{t("profileEvening")}</option>
               </select>
             </div>
 
-            <div className="actions">
-              <button type="submit" className="save-btn" disabled={saving}>
-                {saving ? "جارٍ الحفظ..." : "حفظ"}
+            <div className={styles["actions"]}>
+              <button
+                type="submit"
+                className={styles["save-btn"]}
+                disabled={saving}
+              >
+                {saving ? t("profileSavingButton") : t("profileSaveButton")}
               </button>
             </div>
           </form>
         </div>
-        
       </div>
     </div>
   );

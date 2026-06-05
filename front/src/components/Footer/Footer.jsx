@@ -1,95 +1,108 @@
-import "./Footer.css";
+import styles from "./Footer.module.css";
 
 import { Link } from "react-router-dom";
 
-import { FaFacebookF } from "react-icons/fa";
+import { FaFacebookF,FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { BsChatDotsFill } from "react-icons/bs";
-
+ 
 import logo from "../../assets/images/logo.png";
 
 import { useTranslation } from "react-i18next";
-
-import LanguageSwitcher from "../Navbar/LanguageSwitcher";
 
 const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="footer">
-      <div className="footer-container">
-
+    <footer className={styles["footer"]}>
+      <div className={styles["footer-container"]}>
         {/* LOGO */}
 
-        <div className="footer-logo">
-          <Link to="/" className="logo">
+        <div className={styles["footer-logo"]}>
+          <Link to="/" className={styles["logo"]}>
             <img
-              className="footer-logo"
+              className={styles["footer-logo"]}
               src={logo}
               alt="Sangdz Logo"
             />
           </Link>
 
-          <div className="email">
+          <div className={styles["email"]}>
             <MdEmail size={18} />
-            <span>admin@sangdz.com</span>
+            <span>contact@echeile.com</span>
           </div>
-
-          <div className="footer-lang">
-            <LanguageSwitcher />
+          <div className={styles["company"]}>
+            <a
+              href="https://elkhayme.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              تطوير شركة الخيمة للخدمات التقنية
+            </a>
           </div>
         </div>
 
         {/* LINKS */}
 
-        <div className="footer-links">
+        <div className={styles["footer-links"]}>
           <h3>{t("links")}</h3>
 
           <ul>
             <li>
-              <Link to="/contact">
-                {t("contact")}
-              </Link>
+              <Link to="/contact">{t("contact")}</Link>
             </li>
 
             <li>
-              <Link to="/about">
-                {t("who")}
-              </Link>
+              <Link to="/about">{t("who")}</Link>
             </li>
 
             <li>
-              <Link to="/privacy">
-                {t("privacy")}
-              </Link>
+              <Link to="/privacy">{t("privacy")}</Link>
             </li>
 
             <li>
-              <Link to="/donation-rules">
-                {t("donationRules")}
-              </Link>
+              <Link to="/donation-rules">{t("donationRules")}</Link>
             </li>
 
             <li>
-              <Link to="/donation-benefits">
-                {t("donationBenefits")}
-              </Link>
+              <Link to="/donation-benefits">{t("donationBenefits")}</Link>
             </li>
           </ul>
         </div>
 
         {/* ABOUT */}
 
-        <div className="footer-about">
-           <h3>{t("about")}</h3>
+        <div className={styles["footer-about"]}>
+          <h3>{t("about")}</h3>
 
           <p>{t("aboutDesc")}</p>
 
-          <div className="socials">
-            <FaFacebookF />
+          <div className={styles["socials"]}>
+            <a
+              href="https://www.facebook.com/share/1HKNc9e3e6/?mibextid=wwXIfr
 
-            <BsChatDotsFill />
+"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://wa.me/22249682731"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaWhatsapp />
+            </a>
           </div>
+        </div>
+        <div className={styles["company-mobile"]}>
+          <a
+            href="https://elkhayme.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            تطوير شركة الخيمة للخدمات التقنية
+          </a>
         </div>
       </div>
     </footer>

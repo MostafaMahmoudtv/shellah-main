@@ -1,5 +1,4 @@
-import "./Hero.css";
-
+import styles from "./Hero.module.css";
 import blood from "../../assets/images/blood.png";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
@@ -8,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getWilayas, getMoughataas } from "../../services/locationService";
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const [filters, setFilters] = useState({
@@ -21,7 +20,7 @@ const Hero = () => {
   const [moughataas, setMoughataas] = useState([]);
 
   // =========================
-  // Load Wilayas
+  // Load Wilayas (depends on language)
   // =========================
   useEffect(() => {
     const loadWilayas = async () => {
@@ -34,10 +33,10 @@ const Hero = () => {
     };
 
     loadWilayas();
-  }, []);
+  }, [i18n.language]);
 
   // =========================
-  // Load Moughataas
+  // Load Moughataas (depends on wilaya + language)
   // =========================
   useEffect(() => {
     if (!filters.wilaya) {
@@ -55,7 +54,7 @@ const Hero = () => {
     };
 
     load();
-  }, [filters.wilaya]);
+  }, [filters.wilaya, i18n.language]);
 
   // =========================
   // Search → navigate with query params
@@ -63,29 +62,32 @@ const Hero = () => {
   const handleSearch = () => {
     const params = new URLSearchParams();
 
-    if (filters.bloodType)
+    if (filters.bloodType) {
       params.append("bloodType", filters.bloodType);
+    }
 
-    if (filters.wilaya)
+    if (filters.wilaya) {
       params.append("wilaya", filters.wilaya);
+    }
 
-    if (filters.moughataa)
+    if (filters.moughataa) {
       params.append("moughataa", filters.moughataa);
+    }
 
     navigate(`/search?${params.toString()}`);
   };
 
   return (
-    <section className="hero">
-      <div className="hero-right">
+    <section className={styles.hero}>
+      <div className={styles["hero-right"]}>
 
         <h1>{t("title")}</h1>
         <p>{t("heroDesc")}</p>
 
-        <div className="search-box">
+        <div className={styles["search-box"]}>
           <h3>{t("search")}</h3>
 
-          <div className="filters">
+          <div className={styles["filters"]}>
 
             {/* Blood Type */}
             <select
@@ -118,8 +120,8 @@ const Hero = () => {
             >
               <option value="">{t("state")}</option>
 
-              {wilayas.map((w, i) => (
-                <option key={i} value={w}>
+              {wilayas.map((w) => (
+                <option key={w} value={w}>
                   {w}
                 </option>
               ))}
@@ -134,11 +136,11 @@ const Hero = () => {
               disabled={!filters.wilaya}
             >
               <option value="">
-                {filters.wilaya ? t("province") : "اختر الولاية أولاً"}
+                {filters.wilaya ? t("province") :t("chooseStateFirst")}
               </option>
 
-              {moughataas.map((m, i) => (
-                <option key={i} value={m}>
+              {moughataas.map((m) => (
+                <option key={m} value={m}>
                   {m}
                 </option>
               ))}
@@ -153,7 +155,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="hero-left">
+      <div className={styles["hero-left"]}>
         <img src={blood} alt="blood donation" />
       </div>
     </section>

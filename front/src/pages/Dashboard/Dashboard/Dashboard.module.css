@@ -1,0 +1,353 @@
+.header {
+  background: linear-gradient(135deg, #111827, #1e293b);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  background: #111827;
+  border-radius: 16px;
+    color: #fff;
+
+  padding: 20px;
+  border-left: 4px solid #38bdf8;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 10px;
+  
+    color: #fff;
+
+ }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+      color: #fff;
+
+}
+
+.donorCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  padding: 20px;
+      color: #fff;
+
+  border-radius: 18px;
+  border-right: 4px solid #22c55e;
+}
+
+.info p {
+  margin: 3px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.actions svg {
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+}
+
+.actions svg:hover {
+  color: #000;
+}
+
+.disableBtn {
+  background: orange;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.disabled {
+  color: red;
+  font-weight: bold;
+}
+.searchBox {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px 0;
+}
+
+.searchBox input {
+  width: 100%;
+  padding: 14px 20px 14px 50px;
+  border: 1px solid #334155;
+  border-radius: 14px;
+
+  background: #111827;
+  color: #fff;
+
+  font-size: 15px;
+
+  transition: all 0.3s ease;
+}
+
+.searchBox input::placeholder {
+  color: #94a3b8;
+}
+
+.searchBox input:focus {
+  outline: none;
+  border-color: #38bdf8;
+
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  color: #94a3b8;
+  font-size: 15px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.pagination button {
+  min-width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #111827;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #1e293b;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.activePage {
+  background: #38bdf8 !important;
+  color: white;
+}
+/* ================= TABLET ================= */
+
+@media (max-width: 992px) {
+  .header h2 {
+    font-size: 1.6rem;
+  }
+
+  .header p {
+    font-size: 14px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .card h2 {
+    font-size: 1.8rem;
+  }
+
+  .searchBox {
+    padding: 12px 15px;
+  }
+
+  .searchBox input {
+    font-size: 14px;
+  }
+
+  .donorCard {
+    padding: 16px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 15px;
+  }
+
+  .header h2 {
+    font-size: 1.3rem;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  .stats {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+  }
+
+  .card h2 {
+    font-size: 1.5rem;
+  }
+
+  .searchBox {
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  .searchBox input {
+    font-size: 13px;
+  }
+
+  .searchIcon {
+    font-size: 14px;
+  }
+
+  .list h3 {
+    font-size: 1.1rem;
+  }
+
+  .donorCard {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .info p {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .actions {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .actions svg {
+    font-size: 18px;
+  }
+
+  .deleteBtn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .pagination {
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .pagination button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+  .header h2 {
+    font-size: 1.1rem;
+  }
+
+  .header p {
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card h3 {
+    font-size: 12px;
+  }
+
+  .card h2 {
+    font-size: 1.3rem;
+  }
+
+  .searchBox {
+    padding: 8px 10px;
+  }
+
+  .searchBox input {
+    font-size: 12px;
+  }
+
+  .list h3 {
+    font-size: 1rem;
+  }
+
+  .donorCard {
+    padding: 12px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
+
+  .actions svg {
+    font-size: 16px;
+  }
+
+  .deleteBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .pagination button {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+}

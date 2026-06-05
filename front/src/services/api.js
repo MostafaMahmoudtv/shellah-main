@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://api.echeile.com/api",
 });
 
 // ===============================
@@ -11,7 +11,6 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 
-    // نخليها آمنة لو مفيش headers أصلاً
     config.headers = config.headers || {};
 
     if (token) {
@@ -22,7 +21,7 @@ api.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 // ===============================
@@ -31,16 +30,21 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // لو التوكن انتهى أو المستخدم غير مصرح
     if (error.response?.status === 401) {
+      // remove auth data فقط (بدون reload)
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("role");
 
-      // نوجهه للوجين بدون ما نكسر التطبيق
-      window.location.href = "/login";
+      // ❌ مهم جدًا: منع reload الكامل
+      // window.location.href = "/login";  <-- تم حذفه
+
+      // بدلها: نرسل event للتطبيق
+      window.dispatchEvent(new Event("auth:logout"));
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export default api;

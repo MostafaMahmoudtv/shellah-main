@@ -1,7 +1,19 @@
 import AppError from '../utils/AppError.js';
 
 const handleDuplicateKeyDB = (err) => {
-  return new AppError('رقم الهاتف مسجل مسبقاً', 400);
+  const field = err.keyValue ? Object.keys(err.keyValue)[0] : 'field';
+
+  let message = 'القيمة مستخدمة بالفعل';
+
+  if (field === 'phone') {
+    message = 'رقم الهاتف مسجل مسبقاً';
+  }
+
+  if (field === 'email') {
+    message = 'الإيميل مسجل مسبقاً';
+  }
+
+  return new AppError(message, 400);
 };
 
 const handleValidationErrorDB = (err) => {
@@ -24,10 +36,16 @@ const sendErrorDev = (err, res) => {
 
 const sendErrorProd = (err, res) => {
   if (err.isOperational) {
-    res.status(err.statusCode).json({ success: false, message: err.message });
+    res.status(err.statusCode).json({
+      success: false,
+      message: err.message
+    });
   } else {
     console.error('ERROR 💥', err);
-    res.status(500).json({ success: false, message: 'حدث خطأ ما!' });
+    res.status(500).json({
+      success: false,
+      message: 'حدث خطأ ما!'
+    });
   }
 };
 
@@ -39,9 +57,11 @@ export default (err, req, res, next) => {
     sendErrorDev(err, res);
   } else {
     let error = { ...err, name: err.name, message: err.message };
+
     if (error.code === 11000) error = handleDuplicateKeyDB(error);
     if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
     if (error.name === 'CastError') error = handleCastErrorDB(error);
+
     sendErrorProd(error, res);
   }
 };

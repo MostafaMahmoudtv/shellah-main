@@ -4,7 +4,7 @@
   "support": "Nous soutenir",
   "login": "Connexion",
 
- "title": "Banque de sang en Mauritanie",
+ "title": "Plateforme Chila de mise en relation entre les donneurs de sang et les personnes ayant besoin de sang en Mauritanie.",
 
   "heroDesc": "Sauvez des vies en donnant du sang et rejoignez notre mission humanitaire.",
 
@@ -14,7 +14,7 @@
    "province": "Province",
   "selectProvince": "Choisissez la province",
   "selectProvinceFirst": "Choisissez d'abord la province",
-
+  "chooseStateFirst": "Choisissez d'abord la wilaya",
   "state": "Wilaya",
   "selectState": "Choisissez la wilaya",
 
@@ -25,19 +25,100 @@
   "privacy": "Confidentialité",
   "donationRules": "Conditions du don",
   "donationBenefits": "Avantages du don",
-
+  "totalDonors": "Nombre total de donneurs",
+  "searchPlaceholder": "Rechercher par nom, numéro, groupe sanguin...",
+  "allDonors": "Tous les donneurs",
+  "loading": "Chargement...",
+  "noDonors": "Aucun donneur trouvé",
+  "delete": "Supprimer",
+  "prev": "Précédent",
+  "next": "Suivant",
+  "confirmDelete": "Confirmer la suppression",
+  "deleteWarning": "Êtes-vous sûr ?",
+  "yesDelete": "Oui",
+  "cancel": "Annuler",
+  
+  "deleted": "Supprimé",
+  "deleteSuccess": "Suppression réussie",
+  "deleteFail": "Échec de la suppression",
+  "error": "Erreur",
+  "ok": "OK",
   "about": "À propos",
 
-  "aboutDesc": "Nous sommes des jeunes algériens ambitieux cherchant à aider ceux qui ont besoin de sang.",
+  "aboutDesc": "Une plateforme innovante qui met en relation les donneurs de sang et les personnes ayant besoin de sang, afin de faciliter l'accès aux dons de manière rapide et sécurisée, de contribuer à sauver des vies et de renforcer la solidarité au sein de la communauté.",
   "statistics": "Statistiques",
   "bloodStats": "Donneurs par groupe sanguin",
   "totalDonors": "Total des donneurs",
   "donationBenefitsTitle": "Avantages du don",
-
+ "adminPanel": "Panneau Admin",
+  "dashboard": "Tableau de bord",
+  "admins": "Administrateurs",
+  "sendNotification": "Envoyer une notification",
   "humanBenefits": "Les avantages humains",
+  "alert_warning": "Avertissement",
+  "alert_success": "Succès",
+  "alert_failed": "Échec",
+  "alert_login_required": "Vous devez vous connecter d'abord",
 
+  "btn_ok": "OK",
+
+  "notif_send_to_all": "Envoyer une notification à tous les donateurs",
+  "notif_title": "Titre de la notification",
+  "notif_message": "Message de la notification",
+  "notif_title_placeholder": "Entrez le titre de la notification",
+  "notif_message_placeholder": "Écrivez votre message ici",
+  "notif_send": "Envoyer la notification",
+  "notif_sending": "Envoi de la notification...",
+  "notif_enter_title": "Veuillez entrer le titre de la notification",
+  "notif_enter_message": "Veuillez entrer le message de la notification",
+  "notif_success": "Notification envoyée avec succès",
+  "notif_error": "Erreur lors de l'envoi de la notification",
   "humanBenefitsDesc": "En donnant votre sang, vous contribuez à sauver plusieurs vies. Le sang peut être séparé en plusieurs composants essentiels comme les globules rouges, les plaquettes et le plasma.",
 
+  "message": "Message *",
+
+  "adminTitle": "Administrateurs et gestionnaire du projet",
+  "createAdminTitle": "Créer un nouvel administrateur",
+  "adminListTitle": "Liste des administrateurs",
+
+  "loading": "Chargement...",
+  "noUsers": "Aucun utilisateur",
+
+  "name": "Nom",
+  "phone": "Téléphone",
+  "email": "Email (optionnel)",
+  "password": "Mot de passe",
+
+  "bloodType": "Groupe sanguin",
+  "selectBlood": "Choisir le groupe sanguin",
+
+  "selectWilaya": "Choisir la wilaya",
+  "selectWilayaFirst": "Choisissez d'abord la wilaya",
+  "selectMoughataa": "Choisir la moughataa",
+
+  "create": "Créer un admin",
+  "delete": "Supprimer",
+
+  "tableName": "Nom",
+  "tablePhone": "Téléphone",
+  "tableEmail": "Email",
+  "tableRole": "Rôle",
+  "tableActions": "Actions",
+
+  "roleAdmin": "Admin",
+  "roleSuperAdmin": "Super admin",
+
+  "alertNotAllowed": "Impossible de supprimer le super admin",
+  "alertConfirmTitle": "Confirmation de suppression",
+  "alertConfirmText": "Voulez-vous vraiment supprimer cet admin ?",
+  "alertConfirmYes": "Oui, supprimer",
+  "alertCancel": "Annuler",
+
+  "alertDeleteSuccess": "Supprimé avec succès",
+  "alertDeleteFail": "Échec de la suppression",
+
+  "alertCreateSuccess": "Créé avec succès",
+  "alertCreateFail": "Échec de la création",
   "healthBenefits": "Les avantages pour la santé",
 
   "health1": "Le don du sang stimule la moelle osseuse et favorise la production de nouvelles cellules sanguines.",
@@ -128,19 +209,159 @@
 
   "aboutWebsite": "À propos du site",
 
-  "aboutText1": "La Banque de Sang Algérienne est un site caritatif dédié à aider les autres.",
+  "aboutText1": "Une plateforme innovante qui met en relation les donneurs de sang et les personnes ayant besoin de sang, afin de faciliter l'accès aux dons de manière rapide et sécurisée, de contribuer à sauver des vies et de renforcer la solidarité au sein de la communauté.",
 
-  "aboutText2": "Nous sommes des jeunes algériens ambitieux cherchant à aider ceux qui ont besoin d’une goutte de sang.",
+  "aboutText2": "Nous sommes des jeunes Mauritanieambitieux cherchant à aider ceux qui ont besoin d’une goutte de sang.",
 
   "aboutText3": "Nous avons besoin de votre soutien en partageant le site et en priant pour nous.",
 
   "aboutText4": "Le site n’est affilié à aucune organisation, association ou autre entité.",
 
-  "aboutText5": "Le site est géré par un jeune algérien.",
+  "aboutText5": "Le site est géré par un jeune Mauritanie.",
 
   "aboutText6": "La page Facebook officielle du site se trouve en bas des pages du site.",
   "contactTitle": "Contactez-nous",
+ "nameRequired": "Le nom complet est obligatoire",
+  "nameMinLength": "Le nom doit contenir au moins 3 caractères",
 
+  "phoneRequired": "Le numéro de téléphone est obligatoire",
+  "phoneMauritania": "Veuillez saisir un numéro mauritanien valide",
+"phoneRequired": "Le numéro de téléphone est requis",
+"passwordRequired": "Le mot de passe est requis",
+"invalidCredentials": "Identifiants invalides",
+"accountDisabled": "Compte désactivé",
+"loginFailed": "Échec de connexion",
+  "emailRequired": "L'adresse e-mail est obligatoire",
+  "emailInvalid": "Adresse e-mail invalide",
+  "registerTitle": "Créer un compte",
+  "warningTitle": "Attention",
+  "warningText": "Veuillez vérifier vos informations avant l'inscription",
+
+  "fullName": "Nom complet",
+  "fullNamePlaceholder": "Entrez votre nom complet",
+
+  "phone": "Téléphone",
+  "phonePlaceholder": "Entrez votre numéro",
+
+  "email": "Email",
+  "emailPlaceholder": "Entrez votre email",
+
+  "password": "Mot de passe",
+  "passwordPlaceholder": "Entrez votre mot de passe",
+
+  "confirmPassword": "Confirmer le mot de passe",
+  "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+
+  "bloodType": "Groupe sanguin",
+  "selectBlood": "Choisir le groupe",
+
+  "contactTime": "Heure de contact",
+  "selectContactTime": "Choisir l'heure",
+  "anyTime": "À tout moment",
+  "morning": "Matin",
+  "afternoon": "Après-midi",
+  "evening": "Soir",
+
+  "contactMethod": "Méthode de contact",
+  "selectContactMethod": "Choisir la méthode",
+  "anyMethod": "N'importe quelle méthode",
+  "whatsapp": "WhatsApp",
+  "sms": "SMS",
+  "emailMethod": "Email",
+   "profile": {
+    "personalInfo": "Informations personnelles",
+    "security": "Mot de passe et sécurité",
+    "accountSettings": "Paramètres du compte"
+  },
+    "settings": {
+    "title": "Paramètres du compte",
+    "subtitle": "Gérez ou supprimez définitivement votre compte.",
+    "deleteAccount": "Supprimer le compte",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer définitivement le compte ? Cette action est irréversible.",
+    "deleteSuccess": "Compte supprimé avec succès",
+    "deleteError": "Une erreur est survenue lors de la suppression du compte"
+  },
+    "passwordSecuritySettings": "Paramètres du mot de passe et de la sécurité",
+  "changePasswordSecurely": "Modifiez votre mot de passe en toute sécurité.",
+
+  "currentPassword": "Mot de passe actuel",
+  "newPassword": "Nouveau mot de passe",
+  "confirmPassword": "Confirmer le mot de passe",
+
+  "enterCurrentPassword": "Entrez votre mot de passe actuel",
+  "enterNewPassword": "Entrez votre nouveau mot de passe",
+  "confirmNewPassword": "Confirmez votre nouveau mot de passe",
+  "profilePopupSuccessTitle": "Succès",
+  "profilePopupErrorTitle": "Erreur",
+  "profilePopupConfirm": "OK",
+
+  "profileUpdatedSuccess": "Les modifications ont été enregistrées avec succès",
+  "profileUpdatedError": "Échec de l'enregistrement des modifications",
+  "fillAllFields": "Veuillez remplir tous les champs",
+  "passwordsNotMatch": "Les mots de passe ne correspondent pas",
+ "account_settings": "Paramètres du compte",
+  "logout": "Se déconnecter",
+  "passwordChangedSuccess": "Le mot de passe a été modifié avec succès",
+  "passwordChangedError": "Une erreur est survenue lors du changement du mot de passe",
+ "passwordPopupSuccessTitle": "Succès",
+  "passwordPopupErrorTitle": "Erreur",
+  "passwordPopupWarningTitle": "Attention",
+  "passwordPopupConfirm": "OK",
+  "save": "Enregistrer",
+  "saving": "Enregistrement en cours...",
+  "state": "Wilaya",
+  "province": "Moughataa",
+ "profileAccountInfoTitle": "Informations du compte",
+  "profileNameLabel": "Nom",
+  "profilePhoneLabel": "Téléphone",
+  "profileEmailLabel": "E-mail",
+  "profileBloodTypeLabel": "Groupe sanguin",
+  "profileSelectBloodType": "Choisir le groupe sanguin",
+
+  "profileWilayaLabel": "Wilaya",
+  "profileSelectWilaya": "Choisir la wilaya",
+
+  "profileMoughataaLabel": "Moughataa",
+  "profileSelectMoughataa": "Choisir la moughataa",
+  "profileSelectWilayaFirst": "Choisissez d'abord la wilaya",
+
+  "profileContactMethodLabel": "Méthode de contact",
+  "profileAnyContactMethod": "N'importe laquelle",
+  "profileSmsContact": "SMS",
+  "profilePhoneContact": "Téléphone",
+  "profileWhatsappContact": "WhatsApp",
+
+  "profileContactTimeLabel": "Heure de contact",
+  "profileAnyTime": "À tout moment",
+  "profileMorning": "Matin",
+  "profileAfternoon": "Après-midi",
+  "profileEvening": "Soir",
+    "profileAccountInfoTitle": "Informations du compte",
+
+  "profileSaveButton": "Enregistrer",
+  "profileSavingButton": "Enregistrement...",
+  "selectState": "Choisir la wilaya",
+  "selectProvince": "Choisir la moughataa",
+  "selectStateFirst": "Choisissez d'abord une wilaya",
+
+  "register": "S'inscrire",
+  "login": "Connexion",
+  "alreadyMember": "Déjà membre ?",
+  "passwordRequired": "Le mot de passe est obligatoire",
+  "passwordMinLength": "Le mot de passe doit contenir au moins 6 caractères",
+
+  "confirmPasswordRequired": "La confirmation du mot de passe est obligatoire",
+  "passwordsNotMatch": "Les mots de passe ne correspondent pas",
+
+  "bloodTypeRequired": "Le groupe sanguin est obligatoire",
+
+  "contactTimeRequired": "L'heure de contact préférée est obligatoire",
+
+  "contactMethodRequired": "Le mode de contact est obligatoire",
+
+  "wilayaRequired": "La wilaya est obligatoire",
+
+  "moughataaRequired": "La moughataa est obligatoire",
   "contactDesc": "Nous sommes là pour vous aider. Contactez-nous pour toute question ou suggestion.",
 
   "name": "Nom *",
@@ -227,5 +448,9 @@
   "chooseTime": "Choisir l'heure",
   "chooseGovernorate": "Choisir la wilaya",
   "chooseDistrict": "Choisir la daïra",
-  "chooseMunicipality": "Choisir la commune"
+  "chooseMunicipality": "Choisir la commune",
+  "helloProjectManager": "Bonjour Chef de projet",
+  "helloAdmin": "Bonjour Admin",
+  "projectManager": "Chef de projet",
+  "admin": "Administrateur"
 }

@@ -1,4 +1,4 @@
-import "./DonationBenefits.css";
+import styles from "./DonationBenefits.module.css";
 
 import { useTranslation } from "react-i18next";
 
@@ -6,17 +6,17 @@ const DonationBenefits = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="benefits-page">
+    <section className={styles["benefits-page"]}>
 
-      <div className="benefits-container">
+      <div className={styles["benefits-container"]}>
 
-        <div className="benefits-header">
+        <div className={styles["benefits-header"]}>
           <h1>{t("donationBenefitsTitle")}</h1>
         </div>
 
         {/* الإنسانية */}
 
-        <div className="benefits-section">
+        <div className={styles["benefits-section"]}>
 
           <h2>{t("humanBenefits")}</h2>
 
@@ -28,7 +28,7 @@ const DonationBenefits = () => {
 
         {/* الصحية */}
 
-        <div className="benefits-section">
+        <div className={styles["benefits-section"]}>
 
           <h2>{t("healthBenefits")}</h2>
 
@@ -50,7 +50,7 @@ const DonationBenefits = () => {
 
         {/* جبال حسنات */}
 
-        <div className="benefits-section">
+        <div className={styles["benefits-section"]}>
 
           <h2>{t("goodDeeds")}</h2>
 
@@ -68,7 +68,7 @@ const DonationBenefits = () => {
 
         {/* لماذا اتبرع */}
 
-        <div className="benefits-section">
+        <div className={styles["benefits-section"]}>
 
           <h2>{t("whyDonate")}</h2>
 

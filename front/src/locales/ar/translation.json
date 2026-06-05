@@ -4,7 +4,7 @@
   "support": "ادعمنا",
   "login": "تسجيل الدخول",
 
-  "title": "بنك الدم بموريتانيا",
+  "title": "منصة الشيلة للربط بين المتبرعين بالدم والمحتاجين في موريتانيا ",
 
   "heroDesc": "أنقذ حياة بالتبرع بالدم، انضم إلينا وكن سببًا في إنقاذ الآخرين.",
 
@@ -16,30 +16,169 @@
 
   "state": "الولاية",
   "selectState": "اختر الولاية",
-
+  "chooseStateFirst": "اختر الولاية أولاً",
   "searchBtn": "بحث",
-    "links": "روابط",
+  "links": "روابط",
   "contact": "اتصل بنا",
   "who": "من نحن",
   "privacy": "الخصوصية",
   "donationRules": "شروط التبرع",
   "donationBenefits": "فوائد التبرع",
+  "nameRequired": "الاسم الكامل مطلوب",
+  "nameMinLength": "الاسم يجب أن يحتوي على 3 أحرف على الأقل",
 
+  "phoneRequired": "رقم الهاتف مطلوب",
+  "phoneMauritania": "يجب إدخال رقم هاتف موريتاني صحيح",
+
+  "emailRequired": "البريد الإلكتروني مطلوب",
+  "emailInvalid": "البريد الإلكتروني غير صالح",
+
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "passwordMinLength": "كلمة المرور يجب أن تحتوي على 6 أحرف على الأقل",
+
+  "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب",
+  "passwordsNotMatch": "كلمتا المرور غير متطابقتين",
+  "registerTitle": "إنشاء حساب",
+  "warningTitle": "تنبيه",
+  "warningText": "يرجى التحقق من بياناتك قبل التسجيل",
+
+  "fullName": "الاسم الكامل",
+  "fullNamePlaceholder": "أدخل اسمك الكامل",
+
+  "phone": "رقم الهاتف",
+  "phonePlaceholder": "أدخل رقم هاتفك",
+
+  "email": "البريد الإلكتروني",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+
+  "password": "كلمة المرور",
+  "passwordPlaceholder": "أدخل كلمة المرور",
+
+  "confirmPassword": "تأكيد كلمة المرور",
+  "confirmPasswordPlaceholder": "أعد إدخال كلمة المرور",
+
+  "bloodType": "فصيلة الدم",
+  "selectBlood": "اختر الفصيلة",
+
+  "contactTime": "وقت الاتصال",
+  "selectContactTime": "اختر وقت الاتصال",
+  "anyTime": "أي وقت",
+  "morning": "صباحًا",
+  "afternoon": "بعد الظهر",
+  "evening": "مساءً",
+
+  "contactMethod": "طريقة التواصل",
+  "selectContactMethod": "اختر طريقة التواصل",
+  "anyMethod": "أي طريقة",
+  "whatsapp": "واتساب",
+  "sms": "رسائل نصية",
+  "emailMethod": "البريد الإلكتروني",
+
+  "state": "الولاية",
+  "province": "المقاطعة",
+
+  "selectState": "اختر الولاية",
+  "selectProvince": "اختر المقاطعة",
+  "selectStateFirst": "اختر الولاية أولاً",
+
+  "register": "تسجيل",
+  "login": "تسجيل الدخول",
+  "alreadyMember": "لديك حساب بالفعل؟",
+  "bloodTypeRequired": "فصيلة الدم مطلوبة",
+
+  "contactTimeRequired": "وقت الاتصال المفضل مطلوب",
+
+  "contactMethodRequired": "طريقة الاتصال مطلوبة",
+  "phoneRequired": "رقم الهاتف مطلوب",
+  "passwordRequired": "كلمة المرور مطلوبة",
+  "invalidCredentials": "بيانات الدخول غير صحيحة",
+  "accountDisabled": "الحساب غير مفعل",
+  "loginFailed": "فشل تسجيل الدخول",
+  "wilayaRequired": "الولاية مطلوبة",
+
+  "moughataaRequired": "المقاطعة مطلوبة",
   "about": "من نحن",
 
-  "aboutDesc": "نحن شباب طموح من الجزائر نسعى لخدمة من هم في أمس الحاجة لقطرة دم",
-    "statistics": "الإحصائيات",
+  "aboutDesc": "منصة مبتكرة تربط بين المتبرعين بالدم وطالبيه، لتسهيل الوصول إلى التبرعات بشكل سريع وآمن، والمساهمة في إنقاذ الأرواح وتعزيز التكافل المجتمعي ",
+  "statistics": "الإحصائيات",
   "bloodStats": "المتبرعون حسب فصيلة الدم",
   "totalDonors": "إجمالي المتبرعين",
-  
+
   "donationBenefitsTitle": "فوائد التبرع",
 
   "humanBenefits": "الفوائد الإنسانية",
+  "profile": {
+    "personalInfo": "المعلومات الشخصية",
+    "security": "كلمة المرور والأمان",
+    "accountSettings": "إعدادات الحساب"
+  },
+  "settings": {
+    "title": "إعدادات الحساب",
+    "subtitle": "إدارة حالة الحساب أو حذفه بشكل نهائي.",
+    "deleteAccount": "حذف الحساب",
+    "deleteConfirm": "هل أنت متأكد من حذف الحساب نهائياً؟ لا يمكن التراجع عن هذا الإجراء.",
+    "deleteSuccess": "تم حذف الحساب بنجاح",
+    "deleteError": "حدث خطأ أثناء حذف الحساب"
+  },
+   "passwordSecuritySettings": "إعدادات كلمة المرور والأمان",
+  "changePasswordSecurely": "قم بتغيير كلمة المرور الخاصة بك بشكل آمن.",
 
+  "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+
+  "enterCurrentPassword": "أدخل كلمة المرور الحالية",
+  "enterNewPassword": "أدخل كلمة المرور الجديدة",
+  "confirmNewPassword": "أدخل تأكيد كلمة المرور",
+
+  "fillAllFields": "من فضلك املأ جميع الحقول",
+  "passwordsNotMatch": "كلمتا المرور غير متطابقتين",
+
+  "passwordChangedSuccess": "تم تغيير كلمة المرور بنجاح",
+  "passwordChangedError": "حدث خطأ أثناء تغيير كلمة المرور",
+"account_settings": "إعدادات الحساب",
+  "logout": "تسجيل الخروج",
+  "save": "حفظ",
+  "saving": "جارٍ الحفظ..." ,
   "humanBenefitsDesc": "بتبرعك بالدم، أنت تشارك فى إنقاذ حياة عدة أشخاص فى احتياج ملح للدم أو لأحد مشتقاته لأن الدم يمكن فصله لأربعة مكونات رئيسية هى كرات الدم الحمراء والصفائح الدموية والبلازما وبعض عوامل التجلط. بل أن هذه المكونات يمكن فصلها مرة أخرى إلى مكونات أصغر. إن إحساسك بهذا العطاء سوف يشعرك بالرضا والفخر.",
-
+"passwordPopupSuccessTitle": "تم بنجاح",
+  "passwordPopupErrorTitle": "حدث خطأ",
+  "passwordPopupWarningTitle": "تنبيه",
+  "passwordPopupConfirm": "موافق",
   "healthBenefits": "الفوائد الصحية",
+ "profilePopupSuccessTitle": "تم بنجاح",
+  "profilePopupErrorTitle": "حدث خطأ",
+  "profilePopupConfirm": "موافق",
+ "profileAccountInfoTitle": "معلومات الحساب",
+  "profileNameLabel": "الاسم",
+  "profilePhoneLabel": "الهاتف",
+  "profileEmailLabel": "البريد الإلكتروني",
+  "profileBloodTypeLabel": "فصيلة الدم",
+  "profileSelectBloodType": "اختر فصيلة الدم",
 
+  "profileWilayaLabel": "الولاية",
+  "profileSelectWilaya": "اختر الولاية",
+
+  "profileMoughataaLabel": "المقاطعة",
+  "profileSelectMoughataa": "اختر المقاطعة",
+  "profileSelectWilayaFirst": "اختر الولاية أولاً",
+
+  "profileContactMethodLabel": "وسيلة الاتصال",
+  "profileAnyContactMethod": "أي طريقة",
+  "profileSmsContact": "رسائل نصية",
+  "profilePhoneContact": "تليفون",
+  "profileWhatsappContact": "واتساب",
+  "profileAccountInfoTitle": "معلومات الحساب",
+  "profileContactTimeLabel": "وقت الاتصال",
+  "profileAnyTime": "أي وقت",
+  "profileMorning": "صباحاً",
+  "profileAfternoon": "بعد الظهر",
+  "profileEvening": "مساءً",
+
+  "profileSaveButton": "حفظ",
+  "profileSavingButton": "جارٍ الحفظ..." ,
+  "profileUpdatedSuccess": "تم حفظ التعديلات بنجاح",
+  "profileUpdatedError": "فشل حفظ التعديلات",
   "health1": "توجد فوائد صحية للتبرع بالدم حيث أن التبرع بالدم ينشط خلايا نخاع العظام للمتبرع (مكان تصنيع الدم) مما يزيد من فاعليتها ويجدد نشاطها فتنتج المزيد من خلايا الدم الجديدة.",
 
   "health2": "ثبت أنه في كل مرة تتبرع بالدم فإنك تتخلص من بعض الحديد الذى يحتوية والذى إذا ما ارتفع مستواه بالدم يزيد من مخاطر الاصابة بأمراض القلب.",
@@ -105,7 +244,7 @@
   "after1": "الاسترخاء لمدة عشر دقائق.",
   "after2": "عدم بذل مجهود بدني زائد خلال ساعتين من التبرع.",
   "after3": "تناول السوائل لإعادة تعويض الجسم.",
-   "supportUsTitle": "ادعمنا",
+  "supportUsTitle": "ادعمنا",
 
   "support1": "إدعمنا بنشر الموقع في المنتديات والدردشات ومواقع التواصل الإجتماعي.",
 
@@ -114,7 +253,7 @@
   "support3": "إدعمنا بنشر الموقع بين أصدقائك.",
 
   "support4": "إدعمنا بالدعاء لنا بظهر الغيب.",
-    "privacyTitle": "الخصوصية",
+  "privacyTitle": "الخصوصية",
 
   "howSiteWorks": "شرح عمل الموقع",
 
@@ -125,25 +264,63 @@
   "privacyText3": "المتبرعون وضعوا معلوماتهم لهدف نبيل ويرغبون أن تستخدم معلوماتهم في هدف نبيل كذلك.",
 
   "privacyText4": "للموقع كامل الحق في ملاحقة مخالفي خصوصية الموقع قانونياً.",
-   "aboutTitle": "من نحن",
+  "adminPanel": "لوحة التحكم",
+  "dashboard": "الرئيسية",
+  "admins": "المشرفين",
+  "sendNotification": "إرسال إشعار",
+    "totalDonors": "إجمالي المتبرعين",
+  "searchPlaceholder": "ابحث بالاسم أو الرقم أو الفصيلة...",
+  "allDonors": "جميع المتبرعين",
+  "loading": "جاري التحميل...",
+  "noDonors": "لا يوجد متبرعين",
+  "delete": "حذف",
+  "prev": "السابق",
+  "next": "التالي",
+  "confirmDelete": "تأكيد الحذف",
+  "deleteWarning": "هل أنت متأكد؟",
+  "yesDelete": "نعم",
+  "cancel": "إلغاء",
+  "deleted": "تم الحذف",
+  "deleteSuccess": "تم الحذف بنجاح",
+  "deleteFail": "فشل الحذف",
+  "error": "خطأ",
+  "ok": "حسناً",
+  "aboutTitle": "من نحن",
 
   "aboutWebsite": "عن الموقع",
 
-  "aboutText1": "بنك الدم الجزائري هو موقع خيري وقف لله تعالى.",
+  "aboutText1": "منصة مبتكرة تربط بين المتبرعين بالدم وطالبيه، لتسهيل الوصول إلى التبرعات بشكل سريع وآمن، والمساهمة في إنقاذ الأرواح وتعزيز التكافل المجتمعي   ",
 
-  "aboutText2": "نحن شباب طموح من الجزائر نسعى لخدمة من هم في أمس الحاجة لقطرة دم.",
+  "aboutText2": "نحن شباب طموح من موريتانيا نسعى لخدمة من هم في أمس الحاجة لقطرة دم.",
 
   "aboutText3": "نحتاج منك الدعم بنشر الموقع والدعاء لنا في ظهر الغيب.",
 
   "aboutText4": "الموقع غير تابع لأي منظمة أو جمعية أو أي جهة أخرى.",
 
-  "aboutText5": "يدير الموقع شاب من الجزائر.",
+  "aboutText5": "يدير الموقع شاب من موريتانيا.",
 
   "aboutText6": "صفحة الموقع الرسمية على الفيسبوك موجودة أسفل صفحات الموقع.",
-    "contactTitle": "اتصل بنا",
+  "contactTitle": "اتصل بنا",
 
   "contactDesc": "نحن هنا لمساعدتك، الرجاء التواصل معنا إذا كان لديك أي أسئلة أو اقتراحات.",
+"alert_warning": "تنبيه",
+  "alert_success": "تم بنجاح",
+  "alert_failed": "فشل",
+  "alert_login_required": "يجب تسجيل الدخول أولاً",
 
+  "btn_ok": "حسناً",
+
+  "notif_send_to_all": "إرسال إشعار لجميع المتبرعين",
+  "notif_title": "عنوان الإشعار",
+  "notif_message": "نص الإشعار",
+  "notif_title_placeholder": "أدخل عنوان الإشعار",
+  "notif_message_placeholder": "اكتب الرسالة هنا",
+  "notif_send": "إرسال الإشعار",
+  "notif_sending": "جاري إرسال الإشعار...",
+  "notif_enter_title": "يرجى إدخال عنوان الإشعار",
+  "notif_enter_message": "يرجى إدخال نص الإشعار",
+  "notif_success": "تم إرسال الإشعار بنجاح",
+  "notif_error": "حدث خطأ أثناء إرسال الإشعار",
   "name": "الاسم *",
 
   "email": "البريد الإلكتروني *",
@@ -156,8 +333,52 @@
 
   "messagePlaceholder": "ماذا يخطر في بالك؟",
 
+  "message": "الرسالة *",
+
+  "adminTitle": "المشرفين ومدير المشروع",
+  "createAdminTitle": "إنشاء أدمن جديد",
+  "adminListTitle": "قائمة الأدمن",
+
+  "loading": "جاري التحميل...",
+  "noUsers": "لا يوجد مستخدمون",
+
+  "name": "الاسم",
+  "phone": "رقم الهاتف",
+  "email": "البريد الإلكتروني (اختياري)",
+  "password": "كلمة المرور",
+
+  "bloodType": "فصيلة الدم",
+  "selectBlood": "اختر فصيلة الدم",
+
+  "selectWilaya": "اختر الولاية",
+  "selectWilayaFirst": "اختر الولاية أولاً",
+  "selectMoughataa": "اختر المقاطعة",
+
+  "create": "إنشاء أدمن",
+  "delete": "حذف",
+
+  "tableName": "الاسم",
+  "tablePhone": "الهاتف",
+  "tableEmail": "البريد الإلكتروني",
+  "tableRole": "الدور",
+  "tableActions": "الإجراءات",
+
+  "roleAdmin": "أدمن",
+  "roleSuperAdmin": "مدير عام",
+
+  "alertNotAllowed": "لا يمكن حذف السوبر أدمن",
+  "alertConfirmTitle": "تأكيد الحذف",
+  "alertConfirmText": "هل أنت متأكد من حذف هذا الأدمن؟",
+  "alertConfirmYes": "نعم، احذف",
+  "alertCancel": "إلغاء",
+
+  "alertDeleteSuccess": "تم الحذف بنجاح",
+  "alertDeleteFail": "فشل الحذف",
+
+  "alertCreateSuccess": "تم الإنشاء بنجاح",
+  "alertCreateFail": "فشل الإنشاء",
   "send": "إرسال",
-    "loginTitle": "تسجيل الدخول إلى حسابك",
+  "loginTitle": "تسجيل الدخول إلى حسابك",
   "phone": "الهاتف",
   "password": "كلمة المرور",
   "forgot": "نسيت كلمة المرور؟",
@@ -166,7 +387,7 @@
   "register": "التسجيل",
   "phonePlaceholder": "مثال: 0555 55 55 55",
   "passwordPlaceholder": "أدخل كلمة المرور الخاصة بك",
-    "registerTitle": "إنشاء حساب جديد",
+  "registerTitle": "إنشاء حساب جديد",
 
   "fullName": "الاسم",
   "phone": "الهاتف",
@@ -199,7 +420,7 @@
   "selectState": "الولاية",
   "selectDistrict": "الدائرة",
   "selectCity": "البلدية",
-   "personalInfo": "المعلومات الشخصية",
+  "personalInfo": "المعلومات الشخصية",
   "accountInfo": "معلومات الحساب",
   "save": "حفظ",
 
@@ -226,5 +447,10 @@
   "chooseTime": "اختر وقت الاتصال",
   "chooseGovernorate": "اختر الولاية",
   "chooseDistrict": "اختر الدائرة",
-  "chooseMunicipality": "اختر البلدية"
+  "chooseMunicipality": "اختر البلدية",
+    "helloProjectManager": "أهلاً مدير المشروع",
+  "helloAdmin": "أهلاً مدير",
+  "projectManager": "مدير المشروع",
+  "admin": "أدمن"
+
 }

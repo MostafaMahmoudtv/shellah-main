@@ -1,11 +1,11 @@
 // components/Layout.jsx
-import Sidebar from "./Sidebar";
-
+import Sidebar from "./Sidebar/Sidebar";
+import styles from "./Layout.module.css";
 export default function Layout({ children }) {
   return (
-    <div style={{ display: "flex" }}>
+    <div className={styles.dashContainer}>
       <Sidebar />
-      <div style={{ flex: 1, padding: "20px" }}>
+      <div className={styles.dashBg}>
         {children}
       </div>
     </div>

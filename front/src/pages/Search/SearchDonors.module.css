@@ -1,0 +1,283 @@
+.search-page {
+  max-width: 1150px;
+  margin: 4rem auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+
+  /* NEW */
+  color: var(--text-color);
+}
+
+.table-wrapper {
+  background: var(--card-bg, rgba(255,255,255,0.02));
+  border: 1px solid var(--border-color, #262626);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* =========================
+   Filters
+========================= */
+
+.filters {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr)
+    120px;
+
+  gap: 14px;
+
+  padding: 22px;
+  margin-bottom: 1rem;
+}
+
+.filters select {
+  height: 46px;
+
+  background: var(--input-bg, #101010);
+  border: 1px solid var(--border-color, #2b2b2b);
+
+  border-radius: 8px;
+
+  color: var(--text-color, #fff);
+
+  padding: 0 12px;
+
+  font-size: 14px;
+}
+
+.filters button {
+  height: 46px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: var(--primary-color, #ff6b88);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+/* =========================
+   Table
+========================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+thead tr {
+  border-bottom: 1px solid var(--border-color, #262626);
+}
+
+th {
+  padding: 18px 10px;
+
+  color: var(--text-color, white);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+td {
+  padding: 16px 10px;
+
+  text-align: center;
+
+  color: var(--secondary-text, #cfcfcf);
+
+  font-size: 14px;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border-color, rgba(255,255,255,0.05));
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* =========================
+   Contact Icons
+========================= */
+
+.actions {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 14px;
+}
+
+.actions svg {
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: .25s;
+}
+
+.actions svg:hover {
+  transform: translateY(-2px);
+}
+
+.whatsapp {
+  color: #25d366;
+}
+
+.telegram {
+  color: #229ED9;
+}
+
+.phone {
+  color: var(--secondary-text, #bdbdbd);
+}
+
+/* =========================
+   Footer
+========================= */
+
+.table-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 16px 20px;
+
+  border-top: 1px solid var(--border-color, #262626);
+}
+
+.table-footer p {
+  color: var(--secondary-text, #cfcfcf);
+
+  font-size: 14px;
+}
+
+/* =========================
+   Pagination
+========================= */
+
+.pagination {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 6px;
+
+  border: 1px solid var(--border-color, #333);
+
+  background: transparent;
+
+  color: var(--text-color, white);
+
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  opacity: .4;
+
+  cursor: not-allowed;
+}
+
+.pagination div {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 6px;
+
+  background: var(--primary-color, #ff6b88);
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-weight: 600;
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 992px) {
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 992px) {
+  .filters {
+    gap: 10px;
+  }
+
+  .filters select {
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters select,
+  .filters button {
+    width: 100%;
+  }
+
+  .table-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-page {
+    padding: 15px;
+  }
+
+  .actions svg {
+    font-size: 18px;
+  }
+
+  .page-btn {
+    width: 35px;
+    height: 35px;
+  }
+}

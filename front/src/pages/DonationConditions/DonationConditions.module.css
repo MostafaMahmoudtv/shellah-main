@@ -1,0 +1,92 @@
+.conditions-page {
+  min-height: 100vh;
+
+  padding: 90px 5%;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 11, 82, 0.15),
+      transparent 35%
+    ),
+    var(--hero-bg);
+
+  color: var(--text-color);
+}
+
+.conditions-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.conditions-header {
+  margin-bottom: 35px;
+}
+
+.conditions-header h1 {
+  font-size: 38px;
+
+  color: var(--text-color);
+
+  font-weight: 700;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.conditions-section {
+  margin-bottom: 35px;
+}
+
+.conditions-section h2 {
+  font-size: 24px;
+
+  color: var(--text-color);
+
+  margin-bottom: 15px;
+}
+
+.conditions-section p,
+.conditions-section li {
+  color: var(--secondary-text);
+
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.conditions-section ul {
+  padding-inline-start: 20px;
+}
+
+.conditions-section li {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .conditions-page {
+    padding: 80px 20px;
+  }
+
+  .conditions-header h1 {
+    font-size: 30px;
+  }
+
+  .conditions-section h2 {
+    font-size: 20px;
+  }
+
+  .conditions-section p,
+  .conditions-section li {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}

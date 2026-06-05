@@ -1,0 +1,29 @@
+.dashContainer {
+     display: flex;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.dashBg {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(56, 189, 248, 0.12),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(59, 130, 246, 0.08),
+      transparent 30%
+    ),
+    #020617;
+   padding: 20px;
+    flex: 1;
+  min-width: 0;
+}
+ @media (max-width: 768px) {
+ 
+   .dashBg {
+     padding: 5px;
+   }  
+  }

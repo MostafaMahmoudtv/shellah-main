@@ -1,21 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800&display=swap');
 
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+  /* Main Colors */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --secondary-text: #666666;
+
+  /* Hero */
+  --hero-bg: #f8f8f8;
+
+  /* Cards / Inputs */
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --hover-bg: #f2f2f2;
+
+  /* Borders */
+  --border-color: #dddddd;
+
+  /* Navbar */
+  --navbar-bg: rgba(255, 255, 255, 0.75);
+  --mobile-menu-bg: #ffffff;
+
+  /* Brand */
+  --primary-color: #d60b52;
+}
+
+[data-theme="dark"] {
+  /* Main Colors */
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --secondary-text: #cccccc;
+
+  /* Hero */
+  --hero-bg: #050505;
+
+  /* Cards / Inputs */
+  --card-bg: #1e1e1e;
+  --input-bg: #111111;
+  --hover-bg: #2b2b2b;
+
+  /* Borders */
+  --border-color: #333333;
+
+  /* Navbar */
+  --navbar-bg: rgba(15, 15, 15, 0.65);
+  --mobile-menu-bg: #111111;
+
+  /* Brand */
+  --primary-color: #d60b52;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #050505;
-  color: white;
-  font-family: "Cairo", sans-serif;
-  overflow-x: hidden;
+  font-family: 'Cairo', sans-serif;
+
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 a {
   text-decoration: none;
 }
+
+/* RTL / LTR */
 
 html[dir="rtl"] body {
   direction: rtl;

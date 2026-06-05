@@ -1,12 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { FiLock, FiSave } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
-import "./Password.css";
+import styles from "./Password.module.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://api.echeile.com";
 
 const Password = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     currentPassword: "",
     newPassword: "",
@@ -29,14 +33,23 @@ const Password = () => {
 
     const { currentPassword, newPassword, confirmPassword } = formData;
 
-    // Validation
     if (!currentPassword || !newPassword || !confirmPassword) {
-      alert("من فضلك املأ كل الحقول");
+      Swal.fire({
+        icon: "warning",
+        title: t("passwordPopupWarningTitle"),
+        text: t("fillAllFields"),
+        confirmButtonText: t("passwordPopupConfirm"),
+      });
       return;
     }
 
     if (newPassword !== confirmPassword) {
-      alert("كلمتا المرور غير متطابقتين");
+      Swal.fire({
+        icon: "error",
+        title: t("passwordPopupErrorTitle"),
+        text: t("passwordsNotMatch"),
+        confirmButtonText: t("passwordPopupConfirm"),
+      });
       return;
     }
 
@@ -45,24 +58,27 @@ const Password = () => {
 
       const token = localStorage.getItem("token");
 
-     const response = await axios.put(
-  `${API_URL}/api/donors/change-password`,
-  {
-    currentPassword,
-    newPassword,
-    confirmNewPassword: confirmPassword,
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+      const response = await axios.put(
+        `${API_URL}/api/donors/change-password`,
+        {
+          currentPassword,
+          newPassword,
+          confirmNewPassword: confirmPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
-      alert(response.data?.message || "تم تغيير كلمة المرور بنجاح");
-      console.log("تم التحديث بنجاح ");
-      console.log("Status:", response.status);
-      console.log("Response Data:", response.data);
+      await Swal.fire({
+        icon: "success",
+        title: t("passwordPopupSuccessTitle"),
+        text: response.data?.message || t("passwordChangedSuccess"),
+        confirmButtonText: t("passwordPopupConfirm"),
+      });
+
       setFormData({
         currentPassword: "",
         newPassword: "",
@@ -71,75 +87,84 @@ const Password = () => {
     } catch (error) {
       console.error("Error:", error);
 
-      alert(error.response?.data?.message || "حدث خطأ أثناء تغيير كلمة المرور");
+      Swal.fire({
+        icon: "error",
+        title: t("passwordPopupErrorTitle"),
+        text: error.response?.data?.message || t("passwordChangedError"),
+        confirmButtonText: t("passwordPopupConfirm"),
+      });
     } finally {
       setSaving(false);
     }
   };
 
   return (
-    <div className="security-page">
-      <div className="security-card">
-        <div className="security-header">
-          <h2>إعدادات كلمة المرور والأمان</h2>
-          <p>قم بتغيير كلمة المرور الخاصة بك بشكل آمن.</p>
+    <div className={styles["security-page"]}>
+      <div className={styles["security-card"]}>
+        <div className={styles["security-header"]}>
+          <h2>{t("passwordSecuritySettings")}</h2>
+          <p>{t("changePasswordSecurely")}</p>
         </div>
 
-        <form className="security-form" onSubmit={handleSubmit}>
-          <div className="form-group full-width">
+        <form className={styles["security-form"]} onSubmit={handleSubmit}>
+          <div className={styles["form-group"]}>
             <label>
-              كلمة المرور الحالية <span>*</span>
+              {t("currentPassword")} <span>*</span>
             </label>
 
-            <div className="input-wrapper">
+            <div className={styles["input-wrapper"]}>
               <input
                 type="password"
                 name="currentPassword"
                 value={formData.currentPassword}
                 onChange={handleChange}
-                placeholder="أدخل كلمة المرور الحالية"
+                placeholder={t("enterCurrentPassword")}
               />
-              <FiLock className="icon" />
+              <FiLock className={styles["icon"]} />
             </div>
           </div>
 
-          <div className="form-group">
+          <div className={styles["form-group"]}>
             <label>
-              كلمة المرور الجديدة <span>*</span>
+              {t("newPassword")} <span>*</span>
             </label>
 
-            <div className="input-wrapper">
+            <div className={styles["input-wrapper"]}>
               <input
                 type="password"
                 name="newPassword"
                 value={formData.newPassword}
                 onChange={handleChange}
-                placeholder="أدخل كلمة المرور الجديدة"
+                placeholder={t("enterNewPassword")}
               />
-              <FiLock className="icon" />
+              <FiLock className={styles["icon"]} />
             </div>
           </div>
 
-          <div className="form-group">
+          <div className={styles["form-group"]}>
             <label>
-              تأكيد كلمة المرور <span>*</span>
+              {t("confirmPassword")} <span>*</span>
             </label>
 
-            <div className="input-wrapper">
+            <div className={styles["input-wrapper"]}>
               <input
                 type="password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                placeholder="تأكيد كلمة المرور الجديدة"
+                placeholder={t("confirmNewPassword")}
               />
-              <FiLock className="icon" />
+              <FiLock className={styles["icon"]} />
             </div>
           </div>
 
-          <button type="submit" className="save-btn" disabled={saving}>
+          <button
+            type="submit"
+            className={styles["save-btn"]}
+            disabled={saving}
+          >
             <FiSave />
-            {saving ? "جارٍ الحفظ..." : "حفظ"}
+            {saving ? t("saving") : t("save")}
           </button>
         </form>
       </div>

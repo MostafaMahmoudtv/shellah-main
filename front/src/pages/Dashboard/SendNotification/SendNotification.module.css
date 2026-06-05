@@ -1,0 +1,301 @@
+.notificationPage {
+  padding: 30px;
+  min-height: 100vh;
+}
+
+.notificationContainer {
+  max-width: 900px;
+  margin: auto;
+}
+
+.notificationCard {
+  background: #111827;
+  border-radius: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+}
+
+.notificationCardBody {
+  padding: 35px;
+}
+
+.notificationTitle {
+  color: #f8fafc;
+
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+
+  text-align: center;
+}
+
+.notificationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ================= LABEL ================= */
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formLabel {
+  color: #cbd5e1;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ================= INPUT ================= */
+
+.inputField,
+.textareaField {
+  width: 100%;
+
+  background: #0f172a;
+
+  border: 1px solid #334155;
+  border-radius: 14px;
+
+  color: #fff;
+
+  font-size: 15px;
+
+  transition: all 0.3s ease;
+}
+
+.inputField {
+  height: 56px;
+  padding: 0 18px;
+}
+
+.textareaField {
+  resize: vertical;
+  min-height: 180px;
+  padding: 16px 18px;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+  color: #94a3b8;
+}
+
+.inputField:focus,
+.textareaField:focus {
+  outline: none;
+
+  border-color: #38bdf8;
+
+  box-shadow:
+    0 0 0 4px rgba(56, 189, 248, 0.15);
+}
+
+/* ================= BUTTON ================= */
+
+.submitButton {
+  height: 58px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #38bdf8,
+    #2563eb
+  );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.35);
+}
+
+.submitButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .notificationPage {
+    padding: 15px;
+  }
+
+  .notificationCardBody {
+    padding: 22px;
+  }
+
+  .notificationTitle {
+    font-size: 1.4rem;
+  }
+
+  .inputField,
+  .submitButton {
+    height: 52px;
+  }
+}
+
+/* ================= TABLET ================= */
+
+@media (max-width: 992px) {
+  .notificationPage {
+    padding: 20px;
+  }
+
+  .notificationContainer {
+    max-width: 100%;
+  }
+
+  .notificationCard {
+    border-radius: 18px;
+  }
+
+  .notificationCardBody {
+    padding: 22px;
+  }
+
+  .notificationTitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .formLabel {
+    font-size: 14px;
+  }
+
+  .inputField {
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .textareaField {
+    font-size: 14px;
+    min-height: 160px;
+  }
+
+  .submitButton {
+    height: 50px;
+    font-size: 15px;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .notificationPage {
+    padding: 12px;
+  }
+
+  .notificationCard {
+    border-radius: 14px;
+  }
+
+  .notificationCardBody {
+    padding: 15px;
+  }
+
+  .notificationTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+
+  .notificationForm {
+    gap: 14px;
+  }
+
+  .formGroup {
+    gap: 6px;
+  }
+
+  .formLabel {
+    font-size: 13px;
+  }
+
+  .inputField {
+    height: 44px;
+    padding: 0 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .textareaField {
+    min-height: 130px;
+    padding: 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .submitButton {
+    height: 44px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+  .notificationPage {
+    padding: 8px;
+  }
+
+  .notificationCard {
+    border-radius: 10px;
+  }
+
+  .notificationCardBody {
+    padding: 12px;
+  }
+
+  .notificationTitle {
+    font-size: 1rem;
+  }
+
+  .formLabel {
+    font-size: 12px;
+  }
+
+  .inputField {
+    height: 40px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .textareaField {
+    min-height: 110px;
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .submitButton {
+    height: 40px;
+    font-size: 13px;
+  }
+}

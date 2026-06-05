@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import {
   FaWhatsapp,
-  FaTelegramPlane,
   FaPhone,
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
 
 import { getWilayas, getMoughataas } from "../../services/locationService";
-import "./SearchDonors.css";
+import styles from "./SearchDonors.module.css";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://api.echeile.com";
 
 export default function SearchDonors() {
   const location = useLocation();
+  const { t, i18n } = useTranslation();
 
   const [filters, setFilters] = useState({
     bloodType: "",
@@ -26,7 +28,6 @@ export default function SearchDonors() {
   const [donors, setDonors] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Pagination
   const [page, setPage] = useState(1);
   const limit = 5;
   const [totalPages, setTotalPages] = useState(1);
@@ -38,7 +39,7 @@ export default function SearchDonors() {
   const [selectedMoughataa, setSelectedMoughataa] = useState("");
 
   // =========================
-  // Read query params
+  // Sync URL params
   // =========================
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -48,57 +49,64 @@ export default function SearchDonors() {
     const moughataa = params.get("moughataa") || "";
 
     setFilters({ bloodType, wilaya, moughataa });
+
     setSelectedWilaya(wilaya);
     setSelectedMoughataa(moughataa);
+
     setPage(1);
   }, [location.search]);
 
   // =========================
-  // Load wilayas
+  // Load Wilayas (language-aware)
   // =========================
   useEffect(() => {
     const load = async () => {
-      const data = await getWilayas();
-      setWilayas(data);
+      try {
+        const data = await getWilayas();
+        setWilayas(data);
+      } catch (err) {
+        console.error(err);
+      }
     };
+
     load();
-  }, []);
+  }, [i18n.language]);
 
   // =========================
-  // Load moughataas
+  // Load Moughataas (language-aware)
   // =========================
   useEffect(() => {
-    if (!selectedWilaya) {
-      setMoughataas([]);
-      return;
-    }
-
     const load = async () => {
-      const data = await getMoughataas(selectedWilaya);
-      setMoughataas(data);
+      try {
+        if (!selectedWilaya) {
+          setMoughataas([]);
+          return;
+        }
+
+        const data = await getMoughataas(selectedWilaya);
+        setMoughataas(data);
+      } catch (err) {
+        console.error(err);
+      }
     };
 
     load();
-  }, [selectedWilaya]);
+  }, [selectedWilaya, i18n.language]);
 
   // =========================
   // Fetch donors
   // =========================
-  const fetchDonors = async (customFilters = filters, currentPage = page) => {
+  const fetchDonors = async () => {
     try {
       setLoading(true);
 
       const query = new URLSearchParams();
 
-      if (customFilters.bloodType)
-        query.append("bloodType", customFilters.bloodType);
+      if (filters.bloodType) query.append("bloodType", filters.bloodType);
+      if (filters.wilaya) query.append("wilaya", filters.wilaya);
+      if (filters.moughataa) query.append("moughataa", filters.moughataa);
 
-      if (customFilters.wilaya) query.append("wilaya", customFilters.wilaya);
-
-      if (customFilters.moughataa)
-        query.append("moughataa", customFilters.moughataa);
-
-      query.append("page", currentPage);
+      query.append("page", page);
       query.append("limit", limit);
 
       const { data } = await axios.get(
@@ -116,16 +124,15 @@ export default function SearchDonors() {
   };
 
   useEffect(() => {
-    fetchDonors(filters, page);
-  }, [page]);
+    fetchDonors();
+  }, [filters, page]);
 
   const handleSearch = () => {
     setPage(1);
-    fetchDonors(filters, 1);
   };
 
   // =========================
-  // Contact
+  // Contact actions
   // =========================
   const formatPhone = (phone) => phone?.replace(/\D/g, "");
 
@@ -135,27 +142,23 @@ export default function SearchDonors() {
     window.open(`https://wa.me/${num}`, "_blank");
   };
 
-  const handleTelegram = (phone) => {
-    if (!phone) return;
-    window.open(`https://t.me/${phone}`, "_blank");
-  };
-
   const handleCall = (phone) => {
     if (!phone) return;
     window.open(`tel:${phone}`);
   };
 
   return (
-    <div className="search-page">
+    <div className={styles["search-page"]}>
       {/* Filters */}
-      <div className="filters">
+      <div className={styles["filters"]}>
         <select
           value={filters.bloodType}
           onChange={(e) =>
             setFilters({ ...filters, bloodType: e.target.value })
           }
         >
-          <option value="">فصيلة الدم</option>
+          <option value="">{t("bloodType")}</option>
+
           <option value="A+">A+</option>
           <option value="A-">A-</option>
           <option value="B+">B+</option>
@@ -170,6 +173,7 @@ export default function SearchDonors() {
           value={selectedWilaya}
           onChange={(e) => {
             const value = e.target.value;
+
             setSelectedWilaya(value);
             setSelectedMoughataa("");
 
@@ -180,9 +184,10 @@ export default function SearchDonors() {
             }));
           }}
         >
-          <option value="">الولاية</option>
-          {wilayas.map((w, i) => (
-            <option key={i} value={w}>
+          <option value="">{t("state")}</option>
+
+          {wilayas.map((w) => (
+            <option key={w} value={w}>
               {w}
             </option>
           ))}
@@ -203,42 +208,42 @@ export default function SearchDonors() {
           disabled={!selectedWilaya}
         >
           <option value="">
-            {selectedWilaya ? "المقاطعة" : "اختر الولاية أولاً"}
+            {selectedWilaya ? t("province") : t("chooseStateFirst")}
           </option>
 
-          {moughataas.map((m, i) => (
-            <option key={i} value={m}>
+          {moughataas.map((m) => (
+            <option key={m} value={m}>
               {m}
             </option>
           ))}
         </select>
 
-        <button onClick={handleSearch}>بحث</button>
+        <button onClick={handleSearch}>{t("searchBtn")}</button>
       </div>
 
       {/* Table */}
-      <div className="table-wrapper">
+      <div className={styles["table-wrapper"]}>
         <table>
           <thead>
             <tr>
-              <th>الاسم</th>
-              <th>فصيلة الدم</th>
-              <th>الولاية</th>
-              <th>المقاطعة</th>
-              <th>وسيلة الاتصال</th>
-              <th>وقت الاتصال</th>
-              <th>اتصال</th>
+              <th>{t("name")}</th>
+              <th>{t("bloodType")}</th>
+              <th>{t("state")}</th>
+              <th>{t("province")}</th>
+              <th>{t("contactMethod")}</th>
+              <th>{t("contactTime")}</th>
+              <th>{t("contact")}</th>
             </tr>
           </thead>
 
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan="7">جارٍ البحث...</td>
+                <td colSpan="7">{t("loading")}</td>
               </tr>
             ) : donors.length === 0 ? (
               <tr>
-                <td colSpan="7">لا يوجد متبرعين</td>
+                <td colSpan="7">{t("noDonors")}</td>
               </tr>
             ) : (
               donors.map((donor) => (
@@ -249,18 +254,22 @@ export default function SearchDonors() {
                   <td>{donor.moughataa}</td>
                   <td>{donor.contactMethod}</td>
                   <td>{donor.preferredContactTime}</td>
-
                   <td>
-                    <div className="actions">
-                      <button onClick={() => handleWhatsApp(donor.phone)}>
-                        WhatsApp
-                      </button>
-                      <button onClick={() => handleTelegram(donor.phone)}>
-                        Telegram
-                      </button>
-                      <button onClick={() => handleCall(donor.phone)}>
-                        Call
-                      </button>
+                    <div className={styles.actions}>
+                      {String(donor.contactMethod || "")
+                        .toLowerCase()
+                        .includes("whats") ||
+                      donor.contactMethod === "واتساب" ? (
+                        <FaWhatsapp
+                          className={styles.whatsapp}
+                          onClick={() => handleWhatsApp(donor.phone)}
+                        />
+                      ) : (
+                        <FaPhone
+                          className={styles.phone}
+                          onClick={() => handleCall(donor.phone)}
+                        />
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -269,27 +278,29 @@ export default function SearchDonors() {
           </tbody>
         </table>
 
-        {/* Pagination (arrows) */}
-        <div className="table-footer">
-          <p>{donors.length} متبرع</p>
-          <div className="pagination">
+        {/* Pagination */}
+        <div className={styles["table-footer"]}>
+          <p>
+            {donors.length} {t("donors")}
+          </p>
+
+          <div className={styles.pagination}>
             <button
-              className="page-btn"
+              className={styles["page-btn"]}
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
             >
-                            <FaChevronRight />
-
+              <FaChevronRight />
             </button>
 
             <div className="page-number">{page}</div>
 
             <button
-              className="page-btn"
+              className={styles["page-btn"]}
               disabled={page === totalPages}
               onClick={() => setPage((p) => p + 1)}
             >
-            <FaChevronLeft />
+              <FaChevronLeft />
             </button>
           </div>
         </div>

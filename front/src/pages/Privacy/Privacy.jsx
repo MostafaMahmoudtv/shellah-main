@@ -1,4 +1,4 @@
-import "./Privacy.css";
+import styles from "./Privacy.module.css";
 
 import { useTranslation } from "react-i18next";
 
@@ -6,15 +6,15 @@ const Privacy = () => {
   const { t } = useTranslation();
 
   return (
-    <section className="privacy-page">
+    <section className={styles["privacy-page"]}>
 
-      <div className="privacy-container">
+      <div className={styles["privacy-container"]}>
 
-        <div className="privacy-header">
+        <div className={styles["privacy-header"]}>
           <h1>{t("privacyTitle")}</h1>
         </div>
 
-        <div className="privacy-section">
+        <div className={styles["privacy-section"]}>
 
           <h2>{t("howSiteWorks")}</h2>
 

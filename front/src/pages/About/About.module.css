@@ -1,0 +1,77 @@
+.about-page {
+  min-height: 100vh;
+
+  padding: 120px 7%;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(214, 11, 82, 0.15),
+      transparent 35%
+    ),
+    var(--hero-bg);
+
+  color: var(--text-color);
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.about-header {
+  margin-bottom: 60px;
+}
+
+.about-header h1 {
+  font-size: 25px;
+  color: var(--text-color);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.about-section h2 {
+  font-size: 28px;
+
+  margin: 40px 0 25px;
+
+  color: var(--text-color);
+}
+
+.about-section p {
+  color: var(--secondary-text);
+
+  line-height: 2.3;
+
+  font-size: 16px;
+
+  margin-bottom: 25px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .about-page {
+    padding: 100px 20px;
+  }
+
+  .about-header h1 {
+    font-size: 24px;
+  }
+
+  .about-section h2 {
+    font-size: 20px;
+  }
+
+  .about-section p {
+    font-size: 12px;
+  }
+}

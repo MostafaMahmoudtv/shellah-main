@@ -1,0 +1,301 @@
+.main-profile-page {
+  min-height: 100vh;
+
+  background: var(--bg-color);
+
+  padding: 110px 20px;
+
+  direction: rtl;
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profile-card {
+  flex: 1;
+
+  max-width: 1200px;
+  margin: auto;
+
+  background: var(--card-bg);
+
+  border: 1px solid
+    var(--border-color);
+
+  border-radius: 16px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 0 30px
+    rgba(0, 0, 0, 0.12);
+
+  transition: 0.3s ease;
+}
+
+/* شكل premium للـ dark mode */
+
+[data-theme="dark"] .profile-card {
+  background:
+    linear-gradient(
+      135deg,
+      #11141b 0%,
+      #17131a 100%
+    );
+}
+
+.profile-title {
+  color: var(--text-color);
+
+  font-size: 24px;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+/* =========================
+   ALERT
+========================= */
+
+.alert-box {
+  background:
+    rgba(255, 74, 74, 0.1);
+
+  border: 1px solid
+    rgba(255, 74, 74, 0.25);
+
+  color: #ff7a7a;
+
+  padding: 14px 18px;
+
+  border-radius: 12px;
+
+  margin-bottom: 25px;
+
+  font-size: 14px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.profile-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: var(--text-color);
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 50px;
+
+  background: var(--input-bg);
+
+  border: 1px solid
+    var(--border-color);
+
+  border-radius: 10px;
+
+  padding: 0 15px;
+
+  color: var(--text-color);
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: var(--secondary-text);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color:
+    var(--primary-color);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(214, 11, 82, 0.15);
+}
+
+.form-group select option {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions {
+  grid-column: span 2;
+
+  margin-top: 10px;
+}
+
+.save-btn {
+  background:
+    var(--primary-color);
+
+  border: none;
+
+  color: white;
+
+  height: 48px;
+  min-width: 120px;
+
+  padding: 0 25px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.save-btn:hover {
+  transform:
+    translateY(-2px);
+
+  opacity: 0.9;
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =========================
+   SETTINGS LAYOUT
+========================= */
+
+.settings-layout {
+  display: flex;
+
+  flex-direction: row-reverse;
+
+  gap: 24px;
+
+  justify-content: right;
+}
+
+.settings-sidebar {
+  width: 260px;
+
+  flex-shrink: 0;
+
+  padding-top: 10px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 16px;
+  margin-bottom: 6px;
+
+  color: var(--secondary-text);
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.sidebar-item svg {
+  font-size: 18px;
+}
+
+.sidebar-item span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sidebar-item:hover {
+  background: var(--hover-bg);
+  color: var(--text-color);
+}
+
+.sidebar-item.active {
+  background: var(--hover-bg);
+  color: var(--text-color);
+
+  border: 1px solid
+    var(--border-color);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 992px) {
+  .settings-layout {
+    flex-direction: column;
+  }
+
+  .settings-sidebar {
+    width: 100%;
+
+    display: flex;
+
+    overflow-x: auto;
+
+    gap: 10px;
+  }
+
+  .sidebar-item {
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .profile-form {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    grid-column: span 1;
+  }
+
+  .profile-card {
+    padding: 20px;
+    width: 100%;
+  }
+}

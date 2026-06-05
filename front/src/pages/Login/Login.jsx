@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
 import { FaPhoneAlt, FaLock } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-
 import { login } from "../../services/authService";
-
-import "./login.css";
+import styles from "./login.module.css";
 
 function Login() {
   const { t } = useTranslation();
@@ -17,97 +14,201 @@ function Login() {
     password: "",
   });
 
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [checkingAuth, setCheckingAuth] = useState(true);
 
+  // =========================
+  // Redirect if already logged in
+  // =========================
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+
+    if (token) {
+      if (role === "admin" || role === "super_admin") {
+        navigate("/dashboard", { replace: true });
+      } else {
+        navigate("/", { replace: true });
+      }
+    } else {
+      setCheckingAuth(false);
+    }
+  }, [navigate]);
+
+  // =========================
+  // Handle Input
+  // =========================
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // clear field error instantly
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
   };
 
+  // =========================
+  // Validation
+  // =========================
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = t("phoneRequired") || "رقم الهاتف مطلوب";
+    }
+
+    if (!formData.password) {
+      newErrors.password = t("passwordRequired") || "كلمة المرور مطلوبة";
+    } else if (formData.password.length < 6) {
+      newErrors.password = t("passwordMinLength") || "كلمة المرور قصيرة جدًا";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // =========================
+  // LOGIN
+  // =========================
   const handleLogin = async () => {
+    if (!validate()) return;
+
     try {
       setLoading(true);
 
       const res = await login(formData);
+      const user = res?.user;
 
-      // تأكد إن التوكن موجود
+      // حماية
+      if (!user) {
+        setErrors({ general: "بيانات غير صحيحة" });
+        return;
+      }
+
+      // حساب معطل
+      if (user.isActive === false) {
+        setErrors({ general: "الحساب معطل من الإدارة" });
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("role");
+
+        return;
+      }
+
+      // Save auth
       if (res?.token) {
         localStorage.setItem("token", res.token);
       }
 
-      // روح للهوم
-      navigate("/");
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("role", user.role);
+
+      // redirect
+      if (user.role === "admin" || user.role === "super_admin") {
+        navigate("/dashboard", { replace: true });
+      } else {
+        navigate("/", { replace: true });
+      }
     } catch (err) {
-      console.log(err.response?.data);
-      alert(err.response?.data?.message || "Login failed");
+      console.log(err?.response?.data);
+
+      setErrors({
+        general: err?.response?.data?.message || "حدث خطأ أثناء تسجيل الدخول",
+      });
     } finally {
       setLoading(false);
     }
   };
 
+  const isDisabled = loading || checkingAuth;
+
   return (
-    <div className="login-page">
-      <div className="overlay"></div>
+    <div className={styles.loginPage}>
+      <div className={styles.overlay}></div>
 
-      <div className="login-container">
-        <div className="card">
-
+      <div className={styles.loginContainer}>
+        <div className={styles.card}>
           <h1>{t("loginTitle")}</h1>
 
-          {/* الهاتف */}
-          <div className="input-group">
+          {/* General Error */}
+          {errors.general && (
+            <div className={styles.errorBox}>{errors.general}</div>
+          )}
+
+          {/* Phone */}
+          <div className={styles.inputGroup}>
             <label>{t("phone")}</label>
 
-            <div className="input-box">
+            <div
+              className={`${styles.inputBox} ${
+                errors.phone ? styles.inputError : ""
+              }`}
+            >
               <input
                 type="text"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder={t("phonePlaceholder")}
+                disabled={isDisabled}
               />
               <FaPhoneAlt />
             </div>
+
+            {errors.phone && (
+              <div className={styles.errorText}>{errors.phone}</div>
+            )}
           </div>
 
-          {/* كلمة المرور */}
-          <div className="input-group">
+          {/* Password */}
+          <div className={styles.inputGroup}>
             <label>{t("password")}</label>
 
-            <div className="input-box">
+            <div
+              className={`${styles.inputBox} ${
+                errors.password ? styles.inputError : ""
+              }`}
+            >
               <input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 placeholder={t("passwordPlaceholder")}
+                disabled={isDisabled}
               />
               <FaLock />
             </div>
+
+            {errors.password && (
+              <div className={styles.errorText}>{errors.password}</div>
+            )}
           </div>
 
-          <span className="forgot">
-            {t("forgot")}
-          </span>
+          <span className={styles.forgot}>{t("forgot")}</span>
 
           <button
-            className="submit-btn"
+            className={styles.submitBtn}
             onClick={handleLogin}
-            disabled={loading}
+            disabled={isDisabled}
           >
             {loading ? "Loading..." : t("login")}
           </button>
 
-           <div className="register">
+          <div className={styles.register}>
             <span>{t("newUser")}</span>
-
-            <Link to="/register">
-              {t("register")}
-            </Link>
+            <Link to="/register">{t("register")}</Link>
           </div>
-
         </div>
       </div>
     </div>
